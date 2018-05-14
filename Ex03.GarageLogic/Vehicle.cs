@@ -95,7 +95,7 @@ namespace Ex03.GarageLogic
             this.m_ModelName = r_Default;
             this.m_LicenseNumber = r_Default;
             this.m_RemainingEnergyPercentage = 0;
-            m_Type = eVehicleType.None;
+            this.m_Type = eVehicleType.None;
             InitWheels("", 0, 0);
         }
 

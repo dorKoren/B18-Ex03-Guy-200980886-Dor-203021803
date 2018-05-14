@@ -1,6 +1,5 @@
 ﻿namespace Ex03.GarageLogic
 {
-    /* Interface */
     interface ITruck
     {
         /* Public Methods */

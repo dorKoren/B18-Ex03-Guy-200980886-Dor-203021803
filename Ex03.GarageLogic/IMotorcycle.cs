@@ -1,16 +1,7 @@
-﻿namespace Ex03.GarageLogic
-{
-    /* Enum */
-    public enum eLicenseType
-    {
-        Unknown,
-        A,
-        A1,
-        B1,
-        B2
-    }
+﻿using static Ex03.GarageLogic.Enums;
 
-    /* Interface */
+namespace Ex03.GarageLogic
+{
     interface IMotorcycle
     {
         /* Properties */

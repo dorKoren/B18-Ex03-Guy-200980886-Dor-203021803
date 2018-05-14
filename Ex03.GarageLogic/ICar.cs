@@ -1,25 +1,7 @@
-﻿namespace Ex03.GarageLogic
+﻿using static Ex03.GarageLogic.Enums;
+
+namespace Ex03.GarageLogic
 {
-    /* Enums */
-    public enum eColorType
-    {
-        Unknown,
-        Gray,
-        Blue,
-        White,
-        Black
-    }
-
-    public enum eNumOfDoors
-    {
-        Unknown,
-        Two,
-        Three,
-        Four,
-        Five
-    }
-
-    /* Interface */
     interface ICar
     {
         /* Properties */

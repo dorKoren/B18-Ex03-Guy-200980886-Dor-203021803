@@ -6,19 +6,9 @@ using System;
 
 namespace Ex03.GarageLogic
 {
-    public class FuelBasedVehicle : Vehicle, IFillable  // I made it public 
+    public class FuelBasedVehicle : Vehicle, IFillable   
 
     {
-        /* Enums */
-        public enum eFuelType
-        {
-            Unknown,
-            Soler,
-            Octane95,
-            Octan96,
-            Octan98
-        }
-
         /* Class Members */
         private eFuelType m_FuelType;
         private float m_CurrentAmountOfFuel;  // In liters. 
@@ -61,7 +51,6 @@ namespace Ex03.GarageLogic
         }
 
         /* Public Methods */
-
         public void Fill(float i_Amount)
         {
             float newAmountOfFuel = i_Amount + CurrentAmountOfFuel;
@@ -76,14 +65,12 @@ namespace Ex03.GarageLogic
             }
         }
 
-        /* Public Methods */
-
         /// <summary>
         /// A method that receives how much more fuel to add, and changes the 
         /// amount of fuel, if the fuel type is correct, and the fuel tank
-        /// is less than full
+        /// is less than full.
         /// </summary>
-        public void Refuel(float i_Amount, eFuelType i_FuelType)                            // Guy addition 14.05
+        public void Refuel(float i_Amount, eFuelType i_FuelType)                        
         {
             // We should add exception.
             if (!i_FuelType.Equals(FuelType))
@@ -96,7 +83,6 @@ namespace Ex03.GarageLogic
             }
 
         }
-
 
         public override string ToString()
         {

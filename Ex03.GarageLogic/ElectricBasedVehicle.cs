@@ -6,13 +6,12 @@ namespace Ex03.GarageLogic
     public class ElectricBasedVehicle : Vehicle, IFillable
     {
 
-
         /* Class Members */
-        private float m_CurrentBatteryLife; // In hours.
+        private float m_CurrentBatteryLife;   // In hours.
         private float m_MaxBatteryLife;       // In hours.
 
-
         /* Constructor */
+
         // Default constructor for the use of VehicleMaker class
         public ElectricBasedVehicle() : base()
         {
@@ -23,7 +22,7 @@ namespace Ex03.GarageLogic
         public ElectricBasedVehicle(string i_ModelName, string i_LicenseNumber, float m_MaxTimeOfEngineOperation)
             : base(i_ModelName, i_LicenseNumber)
         {
-            // We should add exception.
+            // We should add exception.???
             this.m_MaxBatteryLife = m_MaxTimeOfEngineOperation;
             this.m_CurrentBatteryLife = m_MaxTimeOfEngineOperation;
         }
@@ -67,10 +66,10 @@ namespace Ex03.GarageLogic
         /* Public Methods */
 
         /// <summary>
-        /// A method charges the given amount of ***mins*** into the vehicle's battry life
-        /// 
+        /// A method charges the given amount of ***mins*** 
+        /// into the vehicle's battry life.
         /// </summary>
-        public void Charge(float i_AmontInMins)                                                   // Guy addition 14.05
+        public void Charge(float i_AmontInMins)    
         {
             try
             {

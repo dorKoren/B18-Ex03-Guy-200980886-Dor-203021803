@@ -18,7 +18,7 @@ namespace Ex03.ConsoleUI
 
             //Start();
 
-            /*
+            
             List<Vehicle.Wheel> list = new List<Vehicle.Wheel>
             {
                 new Vehicle.Wheel("ddd", 10),
@@ -30,7 +30,7 @@ namespace Ex03.ConsoleUI
             //Console.WriteLine(v.ToString());
 
 
-            FuelBasedVehicle fv = new FuelBasedVehicle("1234", "FordFocus", FuelBasedVehicle.eFuelType.Octan96, 50);
+            FuelBasedVehicle fv = new FuelBasedVehicle("1234", "FordFocus", eFuelType.Octan96, 50);
 
             ElectricBasedVehicle ev = new ElectricBasedVehicle("Ferari", "1222", 100);
 
@@ -41,9 +41,11 @@ namespace Ex03.ConsoleUI
             FuelBasedTruck ft = new FuelBasedTruck("22333", "101010101", true, 100);
 
             ElectricBasedMotorcycle em = new ElectricBasedMotorcycle("GOODYEAR", "205151", eLicenseType.A1, 250);
+            //Console.WriteLine(ec.Wheels[0].CurrentAirPressure);
 
             ElectricBasedCar ec = new ElectricBasedCar("zibi", "1234", eColorType.Gray, eNumOfDoors.Three);
 
+            /*
              try
              {
                  ec.Fill(10);
@@ -51,40 +53,40 @@ namespace Ex03.ConsoleUI
              catch (ValueOutOfRangeException e)
              {
                  Console.WriteLine("catch : " + e.Message);
-             } */
-
-            /*
+             } 
+            */
+            
             Garage garage = new Garage();
 
             garage.Insert(ec, "123", "Dor", "11111");  // <--- Bag potential
-            garage.Insert(ec, "456", "guy", "22222");
-            garage.Insert(ec, "678", "zibi", "33333");
+            garage.Insert(fc, "456", "guy", "22222");
+            garage.Insert(ft, "678", "zibi", "33333");
 
-            garage.ChangeVehicleStatus("456", VehicleDetails.eVehicleStatus.Repaired);
+            Console.WriteLine(garage.DisplayVehicleInformation("456"));
 
-            garage.LicenseNumbersList.TryGetValue("456", out VehicleDetails value);
+            //garage.ChangeVehicleStatus("456", VehicleDetails.eVehicleStatus.Repaired);
 
-            Console.WriteLine(ec.Wheels[0].CurrentAirPressure);
+            //garage.LicenseNumbersList.TryGetValue("456", out VehicleDetails value);
 
-            garage.InflateTiresToMaximum("456");
-
-            Console.WriteLine(ec.Wheels[0].CurrentAirPressure);
-            */
-
-            Vehicle newVehicle = MakeNewVehicle(eVehicleType.ElectricBasedCar);
-
+            //ec.Wheels[0].CurrentAirPressure = 5;
+            //Console.WriteLine("wheel cur pressure: " + ec.Wheels[0].CurrentAirPressure);
+            //garage.InflateTiresToMaximum("456");
+            //Console.WriteLine("wheel new pressure: " + ec.Wheels[0].CurrentAirPressure);
+            
 
 
+            /*
+            Vehicle newVehicle = MakeNewVehicle(eVehicleType.FuelBasedCar);          
             Console.WriteLine(newVehicle.ToString());
-            ElectricBasedCar ec = (ElectricBasedCar)newVehicle;
-            ec.Charge((ec.MaxBatteryLife / 2) * 60);
-            ec.ModelName = "Hummer";
-            ec.NumOfDoors = eNumOfDoors.Four;
-            ec.Color = eColorType.Black;
-            ec.InitWheels();
-            Console.WriteLine(ec.ToString());
-            ec.Charge(30);
-            Console.WriteLine(ec.ToString());
+            FuelBasedCar fc = (FuelBasedCar)newVehicle;
+            fc.Refuel(5, FuelBasedCar.eFuelType.Unknown);
+            fc.ModelName = "Hummer";
+            fc.NumOfDoors = eNumOfDoors.Four;
+            fc.Color = eColorType.Black;
+            fc.InitWheels();
+             Console.WriteLine(fc.ToString());
+            fc.Refuel(30, FuelBasedCar.eFuelType.Unknown);
+            Console.WriteLine(fc.ToString());  */
 
 
 

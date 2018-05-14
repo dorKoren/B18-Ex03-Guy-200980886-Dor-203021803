@@ -17,7 +17,6 @@ namespace Ex03.GarageLogic
         private const float k_MaxAmountOfFuel = 115;
         private const eFuelType k_FuelType = eFuelType.Octan96;
 
-
         /* Constructor */
         // Default constructor for the use of VehicleMaker class
         public FuelBasedTruck() : base()
@@ -41,13 +40,13 @@ namespace Ex03.GarageLogic
         public bool IsCooled
         {
             get { return this.m_IsCooled; }
-            set { this.m_IsCooled = value; }                // Guy addition 14.05
+            set { this.m_IsCooled = value; }               
         }
 
         public float VolumeOfCargo
         {
             get { return m_VolumeOfCargo; }
-            set { this.m_VolumeOfCargo = value; }           // Guy addition 14.05
+            set { this.m_VolumeOfCargo = value; }         
         }
 
         /* Public Methods */
@@ -64,8 +63,5 @@ namespace Ex03.GarageLogic
 @"Is Cooled: {0} 
 Volume of cargo: {1}", IsCooled, VolumeOfCargo);
         }
-
-
-
     }
 }
