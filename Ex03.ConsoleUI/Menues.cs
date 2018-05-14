@@ -1,39 +1,16 @@
-﻿using Ex03.GarageLogic;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using static Ex03.GarageLogic.Enums;
-using static Ex03.GarageLogic.VehicleMaker;
+using System.Threading.Tasks;
 
 namespace Ex03.ConsoleUI
 {
-    public class Engine
+    public static class Menues
     {
 
-        public static void Run()
-        {
 
-            Console.WriteLine(DisplayMenue());
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /* Private Methods */
-        private static string DisplayMenue()
+        public static string DisplayMenue()
         {
             return string.Format(
 @"
@@ -50,4 +27,6 @@ namespace Ex03.ConsoleUI
 |_______________________________________________________________| ");
         }
     }
+
 }
+

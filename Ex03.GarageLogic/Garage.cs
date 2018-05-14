@@ -229,8 +229,6 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             return vehicleInformation;
         }
 
-
-
         /* Private Methods */
         private eVehicleType GetVehicleType(int i_TypeIndex)
         {
