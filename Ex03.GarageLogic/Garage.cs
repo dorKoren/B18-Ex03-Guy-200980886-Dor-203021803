@@ -206,8 +206,6 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             {
 
             }
-
-
         }
 
         public void ChargeElectricBasedVehicle(
