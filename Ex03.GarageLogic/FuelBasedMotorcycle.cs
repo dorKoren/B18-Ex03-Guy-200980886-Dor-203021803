@@ -26,6 +26,7 @@ namespace Ex03.GarageLogic
         {
             this.m_LicenseType = eLicenseType.Unknown;
             this.m_EngineVolume = 0;
+            MaxAmountOfFuel = k_MaxAmountOfFuel;
             Type = eVehicleType.FuelBasedMotorcycle;
         }
 

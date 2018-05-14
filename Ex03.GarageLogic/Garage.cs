@@ -125,7 +125,7 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
                 else
                 {
                     VehicleDetails details = new VehicleDetails(i_OwnerName, i_OwnerPhone);
-                    details.VehicleStatus = VehicleDetails.eVehicleStatus.Waiting;   // I change the seder
+                    details.VehicleStatus = VehicleDetails.eVehicleStatus.Waiting;   
 
                     LicenseNumbersList.Add(i_LicenseNumber, details);
                     VehicleList.Add(i_LicenseNumber, i_Vehicle);
@@ -154,13 +154,13 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             {
                 licenseNumbersList = printLicenseNumbersList(LicenseNumbersList);
             }
-            // Print the filter list.
+            // Print the filtered list.
             else
             {
-                Dictionary<string, VehicleDetails> filterDictionary = LicenseNumbersList;
+                Dictionary<string, VehicleDetails> filteredDictionary = LicenseNumbersList;
                 List<string> licenses = getDifferentLicensesStatus(i_FilteringStatus);
-                removeLicenses(filterDictionary, licenses);
-                licenseNumbersList = printLicenseNumbersList(filterDictionary);  // i didn't figure out how to use to string method...
+                removeLicenses(filteredDictionary, licenses);
+                licenseNumbersList = printLicenseNumbersList(filteredDictionary);  // i didn't figure out how to use to string method...
             }
 
             return licenseNumbersList;
@@ -186,13 +186,18 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             // Exception !!!
 
             VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle);       // upcasting!!!
-
+            if (vehicle != null)
+            {
+                vehicle.InflateAllWheels(vehicle.Wheels[0].MaxAirPressure);
+            }
+            /*
             foreach (Wheel wheel in vehicle.Wheels)
             {
                 float currentAirPressure = wheel.CurrentAirPressure;
                 float maxAirPressure = wheel.MaxAirPressure;
                 wheel.Fill(maxAirPressure - currentAirPressure);
             }
+            */
         }
 
 
@@ -201,11 +206,14 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             eFuelType i_FuelType,
             float i_RefuelAmount)
         {
-            // Exception !!!
-            // TODO: complete.
-            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))   // down casting !!!
-            {
+            // Exception !!!    - No need, the Refuel() method within FuelBasedVehicle.cs checks for it
 
+            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))   
+            {
+                FuelBasedVehicle fuelVehicle = (FuelBasedVehicle)vehicle;       // down casting !!!
+                if (fuelVehicle != null){
+                    fuelVehicle.Refuel(i_RefuelAmount, i_FuelType);             // checks for wrong type of fuel
+                }
             }
 
 

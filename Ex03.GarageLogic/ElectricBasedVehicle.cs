@@ -44,12 +44,12 @@ namespace Ex03.GarageLogic
         /* Unimplemented Methods */
 
         /// <summary>
-        /// Receives how many more hours to add, and charges the battery,
+        /// Receives how many more ***minutes*** to add, and charges the battery,
         /// while not crossing the max limit.
         /// </summary>
         public void Fill(float i_Amount)
         {
-            float newBatteryLife = i_Amount + CurrentBatteryLife;
+            float newBatteryLife = (i_Amount / 60F) + CurrentBatteryLife;
 
             if (newBatteryLife > MaxBatteryLife || i_Amount < 0)
             {
@@ -59,9 +59,27 @@ namespace Ex03.GarageLogic
             {
                 CurrentBatteryLife = newBatteryLife;
             }
+            // update the remaining amount of energy
+            RemainingEnergyPercentage = (MaxBatteryLife > 0) ? ((CurrentBatteryLife / MaxBatteryLife) * 100) : 0;
+
         }
 
         /* Public Methods */
+
+        /// <summary>
+        /// A method charges the given amount of ***mins*** into the vehicle's battry life
+        /// 
+        /// </summary>
+        public void Charge(float i_AmontInMins)                                                   // Guy addition 14.05
+        {
+            try
+            {
+               Fill(i_AmontInMins);
+            }
+            catch { }
+
+        }
+
         public override string ToString()
         {
             return string.Format(base.ToString() +

@@ -76,6 +76,17 @@ namespace Ex03.ConsoleUI
 
 
             Console.WriteLine(newVehicle.ToString());
+            ElectricBasedCar ec = (ElectricBasedCar)newVehicle;
+            ec.Charge((ec.MaxBatteryLife / 2) * 60);
+            ec.ModelName = "Hummer";
+            ec.NumOfDoors = eNumOfDoors.Four;
+            ec.Color = eColorType.Black;
+            ec.InitWheels();
+            Console.WriteLine(ec.ToString());
+            ec.Charge(30);
+            Console.WriteLine(ec.ToString());
+
+
 
 
 

@@ -65,9 +65,9 @@ namespace Ex03.GarageLogic
             public override string ToString()
             {
                 return string.Format(
-@"Manufacturer Name:     {0}
-Current air pressure:  {1}
-Max air pressure:      {2}", ManufacturerName, CurrentAirPressure, MaxAirPressure);
+@"        Manufacturer Name:     {0}
+        Current air pressure:  {1}
+        Max air pressure:      {2}", ManufacturerName, CurrentAirPressure, MaxAirPressure);
             }
         }
 
@@ -189,7 +189,8 @@ Max air pressure:      {2}", ManufacturerName, CurrentAirPressure, MaxAirPressur
         {
 
             return string.Format(
-@"Model name: {0}
+@"
+Model name: {0}
 License number: {1}
 Remaining energy percentage: {2}%
 
@@ -204,7 +205,7 @@ Wheels:
 
             foreach (Wheel currentWheel in i_Wheels)
             {
-                sb.Append("wheel " + i_Wheels.IndexOf(currentWheel) + ":\n");
+                sb.Append("     wheel " + i_Wheels.IndexOf(currentWheel) + ":\n");
                 sb.Append(currentWheel.ToString() + "\n");
             }
 

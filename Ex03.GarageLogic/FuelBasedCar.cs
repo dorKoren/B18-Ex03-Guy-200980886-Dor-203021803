@@ -22,6 +22,7 @@ namespace Ex03.GarageLogic
         {
             this.m_Color = eColorType.Unknown;
             this.m_NumOfDoors = eNumOfDoors.Unknown;
+            MaxAmountOfFuel = k_MaxAmountOfFuel;
             Type = eVehicleType.FuelBasedCar;
         }
 
