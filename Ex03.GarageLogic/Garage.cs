@@ -168,7 +168,9 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
 
 
 
-        public void ChangeVehicleStatus(string i_LicenseNumber, VehicleDetails.eVehicleStatus i_DesiredStatus)
+        public void ChangeVehicleStatus(
+            string i_LicenseNumber,
+            VehicleDetails.eVehicleStatus i_DesiredStatus)
         {
             // Exception !!!
 
@@ -183,7 +185,7 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
         {
             // Exception !!!
 
-            VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle);  // upcasting!!!
+            VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle);       // upcasting!!!
 
             foreach (Wheel wheel in vehicle.Wheels)
             {
@@ -194,15 +196,24 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
         }
 
 
-        public void RefuelFuelBasedVehicle(string i_LicenseNumber, eFuelType i_FuelType, float i_RefuelAmount)
+        public void RefuelFuelBasedVehicle(                                
+            string i_LicenseNumber,
+            eFuelType i_FuelType,
+            float i_RefuelAmount)
         {
             // Exception !!!
             // TODO: complete.
+            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))   // down casting !!!
+            {
+
+            }
 
 
         }
 
-        public void ChargeElectricBasedVehicle(string i_LicenseNumber, float i_ChargingAmount)
+        public void ChargeElectricBasedVehicle(
+            string i_LicenseNumber,
+            float i_ChargingAmount)
         {
             // Exception ???
             // TODO: complete.
@@ -248,7 +259,8 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             return type;
         }
 
-        private string printLicenseNumbersList(Dictionary<string, VehicleDetails> i_LicenseNumbers)  // How can we make it to be polimorfic?
+        private string printLicenseNumbersList(
+            Dictionary<string, VehicleDetails> i_LicenseNumbers)  // How can we make it to be polimorfic?
         {
             StringBuilder sb = new StringBuilder();
 
