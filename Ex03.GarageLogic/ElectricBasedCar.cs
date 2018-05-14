@@ -60,8 +60,5 @@ namespace Ex03.GarageLogic
 @"Color: {0} 
 Num of doors: {1}", Color, NumOfDoors);
         }
-
-
-
     }
 }

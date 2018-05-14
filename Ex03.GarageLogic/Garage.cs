@@ -203,9 +203,17 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
         {
             // Exception !!!
             // TODO: complete.
-            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))   // down casting !!!
-            {
 
+            // Get the vehicle with respect to his license number.
+            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))   
+            {
+                if (vehicle is FuelBasedCar fuelBasedCar)   
+                {
+                    if (i_FuelType.Equals(fuelBasedCar.FuelType))     // down casting !!! bag potential
+                    {                                                 // steel need to check it.
+                        fuelBasedCar.Fill(i_RefuelAmount);
+                    }
+                }
             }
         }
 
@@ -215,6 +223,12 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
         {
             // Exception ???
             // TODO: complete.
+
+            // Get the vehicle with respect to his license number.
+            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))   // down casting !!!
+            {
+                // ???
+            }
         }
 
 
