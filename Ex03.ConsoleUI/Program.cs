@@ -11,14 +11,14 @@ using static Ex03.GarageLogic.VehicleMaker;
 
 namespace Ex03.ConsoleUI
 {
-    class Program
+    public class Program
     {
         public static void Main()
         {
 
             //Start();
 
-            /*
+            
             List<Vehicle.Wheel> list = new List<Vehicle.Wheel>
             {
                 new Vehicle.Wheel("ddd", 10),
@@ -43,7 +43,8 @@ namespace Ex03.ConsoleUI
             ElectricBasedMotorcycle em = new ElectricBasedMotorcycle("GOODYEAR", "205151", eLicenseType.A1, 250);
 
             ElectricBasedCar ec = new ElectricBasedCar("zibi", "1234", eColorType.Gray, eNumOfDoors.Three);
-
+            
+             /*
              try
              {
                  ec.Fill(10);
@@ -53,32 +54,33 @@ namespace Ex03.ConsoleUI
                  Console.WriteLine("catch : " + e.Message);
              } */
 
-            /*
+            
             Garage garage = new Garage();
 
-            garage.Insert(ec, "123", "Dor", "11111");  // <--- Bag potential
-            garage.Insert(ec, "456", "guy", "22222");
-            garage.Insert(ec, "678", "zibi", "33333");
+            garage.Insert(fv, "123", "Dor", "11111");  // <--- Bag potential
+            garage.Insert(ft, "456", "guy", "22222");
+            garage.Insert(fm, "678", "zibi", "33333");
 
             garage.ChangeVehicleStatus("456", VehicleDetails.eVehicleStatus.Repaired);
 
             garage.LicenseNumbersList.TryGetValue("456", out VehicleDetails value);
 
-            Console.WriteLine(ec.Wheels[0].CurrentAirPressure);
+            //Console.WriteLine(ec.Wheels[0].CurrentAirPressure);
 
-            garage.InflateTiresToMaximum("456");
+            //garage.InflateTiresToMaximum("456");
 
-            Console.WriteLine(ec.Wheels[0].CurrentAirPressure);
-            */
-
-            Vehicle newVehicle = MakeNewVehicle(eVehicleType.ElectricBasedCar);
+            //Console.WriteLine(ec.Wheels[0].CurrentAirPressure);
 
 
-
-            Console.WriteLine(newVehicle.ToString());
+            Console.WriteLine("ft current ammount of fuel: " + ft.CurrentAmountOfFuel);
+            garage.RefuelFuelBasedVehicle("456", FuelBasedVehicle.eFuelType.Octan96, 5);
+            Console.WriteLine("ft new ammount of fuel: " + ft.CurrentAmountOfFuel);
 
 
 
+            //Vehicle newVehicle = MakeNewVehicle(eVehicleType.ElectricBasedCar);
+
+            //Console.WriteLine(newVehicle.ToString());
             //Console.WriteLine(garage.DisplayLicenseNumbersList(Garage.VehicleDetails.eVehicleStatus.Waiting));
 
 

@@ -9,7 +9,7 @@ using static Ex03.GarageLogic.VehicleMaker;
 
 namespace Ex03.ConsoleUI
 {
-    class Engine
+    public class Engine
     {
     }
 }

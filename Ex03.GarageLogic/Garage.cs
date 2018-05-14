@@ -202,13 +202,14 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             float i_RefuelAmount)
         {
             // Exception !!!
-            // TODO: complete.
 
             // Get the vehicle with respect to his license number.
             if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))   
             {
+                // Check if the vehicle is a fuel based car
                 if (vehicle is FuelBasedCar fuelBasedCar)   
                 {
+                    // Check if the fuel types are identical.
                     if (i_FuelType.Equals(fuelBasedCar.FuelType))     // down casting !!! bag potential
                     {                                                 // steel need to check it.
                         fuelBasedCar.Fill(i_RefuelAmount);
