@@ -13,6 +13,13 @@ namespace Ex03.GarageLogic
 
 
         /* Constructor */
+        // Default constructor for the use of VehicleMaker class
+        public ElectricBasedVehicle() : base()
+        {
+            this.m_MaxBatteryLife = 0;
+            this.m_CurrentBatteryLife = 0;
+        }
+
         public ElectricBasedVehicle(string i_ModelName, string i_LicenseNumber, float m_MaxTimeOfEngineOperation)
             : base(i_ModelName, i_LicenseNumber)
         {
@@ -24,13 +31,14 @@ namespace Ex03.GarageLogic
         /* Properties */
         public float CurrentBatteryLife
         {
-            get { return m_CurrentBatteryLife; }
-            set { m_CurrentBatteryLife = value; }
+            get { return this.m_CurrentBatteryLife; }
+            set { this.m_CurrentBatteryLife = value; }
         }
 
         public float MaxBatteryLife
         {
-            get { return m_MaxBatteryLife; }
+            get { return this.m_MaxBatteryLife; }
+            set { this.m_MaxBatteryLife = value; }
         }
 
         /* Unimplemented Methods */

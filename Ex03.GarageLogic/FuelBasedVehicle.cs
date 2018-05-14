@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using static Ex03.GarageLogic.Vehicle;
 using static Ex03.GarageLogic.IFillable;
+using static Ex03.GarageLogic.Enums;
 using System;
 
 namespace Ex03.GarageLogic
@@ -11,6 +12,7 @@ namespace Ex03.GarageLogic
         /* Enums */
         public enum eFuelType
         {
+            Unknown,
             Soler,
             Octane95,
             Octan96,
@@ -23,6 +25,14 @@ namespace Ex03.GarageLogic
         private float m_MaxAmountOfFuel;      // In liters.
 
         /* Constructor */
+        // Default constructor for the use of VehicleMaker class
+        public FuelBasedVehicle() : base()
+        {
+            this.m_FuelType = eFuelType.Unknown;
+            this.m_CurrentAmountOfFuel = 0;
+            this.m_MaxAmountOfFuel = 0;
+        }
+
         public FuelBasedVehicle(string i_ModelName, string i_LicenseNumber, eFuelType i_FuelType, float i_MaxAmountOfFuel)
             : base(i_ModelName, i_LicenseNumber)
 
@@ -47,9 +57,11 @@ namespace Ex03.GarageLogic
         public float MaxAmountOfFuel
         {
             get { return m_MaxAmountOfFuel; }
+            set { this.m_MaxAmountOfFuel = value; }
         }
 
-        /* Unimplemented Methods */
+        /* Public Methods */
+
         public void Fill(float i_Amount)
         {
             float newAmountOfFuel = i_Amount + CurrentAmountOfFuel;
@@ -71,11 +83,14 @@ namespace Ex03.GarageLogic
         /// amount of fuel, if the fuel type is correct, and the fuel tank
         /// is less than full
         /// </summary>
-        public void Refueling(float i_Amount, eFuelType i_FuelType)
+        public void Refuel(float i_Amount, eFuelType i_FuelType)                            // Guy addition 14.05
         {
             // We should add exception.
-            // TODO: complete 
-            if (i_FuelType.Equals(FuelType))
+            if (!i_FuelType.Equals(FuelType))
+            {
+                throw new ArgumentException(this.GetType().Name + " Wrong fuel type");
+            }
+            else
             {
                 Fill(i_Amount);
             }

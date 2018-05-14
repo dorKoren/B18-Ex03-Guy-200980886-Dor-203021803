@@ -1,4 +1,6 @@
-﻿namespace Ex03.GarageLogic
+﻿using static Ex03.GarageLogic.Enums;
+
+namespace Ex03.GarageLogic
 {
     public class ElectricBasedCar : ElectricBasedVehicle, ICar
     {
@@ -14,23 +16,34 @@
 
 
         /* Constructor */
+        // Default constructor for the use of VehicleMaker class
+        public ElectricBasedCar() : base()
+        {
+            this.m_Color = eColorType.Unknown;
+            this.m_NumOfDoors = eNumOfDoors.Unknown;
+            Type = eVehicleType.ElectricBasedCar;
+        }
+
         public ElectricBasedCar(string i_ModelName, string i_LicenseNumber, eColorType i_Color,
             eNumOfDoors i_NumOfDoors) : base(i_LicenseNumber, i_ModelName, k_MaxBatteryLife)
         {
             this.m_Color = i_Color;
             this.m_NumOfDoors = i_NumOfDoors;
+            Type = eVehicleType.ElectricBasedCar;
             InitWheels();
         }
 
         /* Unimplemented Properties */
         public eColorType Color
         {
-            get { return m_Color; }
+            get { return this.m_Color; }
+            set { this.m_Color = value; }               // Guy addition 14.05
         }
 
         public eNumOfDoors NumOfDoors
         {
-            get { return m_NumOfDoors; }
+            get { return this.m_NumOfDoors; }
+            set { this.m_NumOfDoors = value; }          // Guy addition 14.05
         }
 
         /* Public Methods */
