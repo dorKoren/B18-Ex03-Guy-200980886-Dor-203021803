@@ -3,6 +3,7 @@
     /* Enums */
     public enum eColorType
     {
+        Unknown,
         Gray,
         Blue,
         White,
@@ -11,6 +12,7 @@
 
     public enum eNumOfDoors
     {
+        Unknown,
         Two,
         Three,
         Four,

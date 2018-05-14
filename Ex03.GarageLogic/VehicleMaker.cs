@@ -3,46 +3,41 @@ using System.Collections.Generic;
 using static Ex03.GarageLogic.ElectricBasedVehicle;
 using static Ex03.GarageLogic.FuelBasedVehicle;
 using static Ex03.GarageLogic.Vehicle;
+using static Ex03.GarageLogic.Enums;
 
 namespace Ex03.GarageLogic
 {
-    public class VehiclesMaker
+    public static class VehicleMaker
     {
 
-        /* Enums */
-        public enum eVehicleType
-        {
-            None,
-            ElectricBasedMotorcycle,
-            ElectricBasedCar,
-            FuelBasedMotorcycle,
-            FuelBasedCar,
-            FuelBasedTruck,
-        }
-
-
         /* Public Methods */
-        public Vehicle MakeNewVehicle(eVehicleType i_VehicleType)
+        public static Vehicle MakeNewVehicle(eVehicleType i_VehicleType)
         {
             Vehicle newVehicle = null;   // Bag Potential ! we need to think about corect exception!
+
             switch (i_VehicleType)
             {
-                case (eVehicleType.ElectricBasedCar):
-                    break;
                 case (eVehicleType.ElectricBasedMotorcycle):
-
+                    newVehicle = new ElectricBasedMotorcycle();
                     break;
-                case (eVehicleType.FuelBasedCar):
 
+                case (eVehicleType.ElectricBasedCar):
+                    newVehicle = new ElectricBasedCar();
                     break;
+
                 case (eVehicleType.FuelBasedMotorcycle):
-
+                    newVehicle = new FuelBasedMotorcycle();
                     break;
+
+                case (eVehicleType.FuelBasedCar):
+                    newVehicle = new FuelBasedCar();
+                    break;
+               
                 case (eVehicleType.FuelBasedTruck):
-
+                    newVehicle = new FuelBasedTruck();
                     break;
-                default:
 
+                default:
                     break;
             }
 

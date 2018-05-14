@@ -3,6 +3,7 @@
     /* Enum */
     public enum eLicenseType
     {
+        Unknown,
         A,
         A1,
         B1,

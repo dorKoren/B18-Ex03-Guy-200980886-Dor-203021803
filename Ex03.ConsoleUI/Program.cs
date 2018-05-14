@@ -5,6 +5,9 @@ using static Ex03.ConsoleUI.UI;
 using static Ex03.GarageLogic.Vehicle;
 using static Ex03.GarageLogic.ValueOutOfRangeException;
 using static Ex03.GarageLogic.Garage;
+using static Ex03.GarageLogic.Enums;
+using static Ex03.GarageLogic.VehicleMaker;
+
 
 namespace Ex03.ConsoleUI
 {
@@ -15,7 +18,7 @@ namespace Ex03.ConsoleUI
 
             //Start();
 
-
+            /*
             List<Vehicle.Wheel> list = new List<Vehicle.Wheel>
             {
                 new Vehicle.Wheel("ddd", 10),
@@ -41,7 +44,7 @@ namespace Ex03.ConsoleUI
 
             ElectricBasedCar ec = new ElectricBasedCar("zibi", "1234", eColorType.Gray, eNumOfDoors.Three);
 
-            /* try
+             try
              {
                  ec.Fill(10);
              }
@@ -50,7 +53,7 @@ namespace Ex03.ConsoleUI
                  Console.WriteLine("catch : " + e.Message);
              } */
 
-
+            /*
             Garage garage = new Garage();
 
             garage.Insert(ec, "123", "Dor", "11111");  // <--- Bag potential
@@ -66,10 +69,13 @@ namespace Ex03.ConsoleUI
             garage.InflateTiresToMaximum("456");
 
             Console.WriteLine(ec.Wheels[0].CurrentAirPressure);
+            */
+
+            Vehicle newVehicle = MakeNewVehicle(eVehicleType.ElectricBasedCar);
 
 
 
-            //Console.WriteLine(value.VehicleStatus.ToString());
+            Console.WriteLine(newVehicle.ToString());
 
 
 

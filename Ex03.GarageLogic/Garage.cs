@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using static Ex03.GarageLogic.Vehicle;
 using static Ex03.GarageLogic.FuelBasedVehicle;
-using static Ex03.GarageLogic.VehiclesMaker;
+using static Ex03.GarageLogic.VehicleMaker;
+using static Ex03.GarageLogic.Enums;
 
 namespace Ex03.GarageLogic
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using static Ex03.GarageLogic.FuelBasedVehicle;
+using static Ex03.GarageLogic.Enums;
 
 namespace Ex03.GarageLogic
 {
@@ -20,23 +21,34 @@ namespace Ex03.GarageLogic
 
 
         /* Constructor */
+        // Default constructor for the use of VehicleMaker class
+        public FuelBasedMotorcycle() : base()
+        {
+            this.m_LicenseType = eLicenseType.Unknown;
+            this.m_EngineVolume = 0;
+            Type = eVehicleType.FuelBasedMotorcycle;
+        }
+
         public FuelBasedMotorcycle(string i_ModelName, string i_LicenseNumber, eLicenseType i_LicenseType,
             int i_EngineVolume) : base(i_LicenseNumber, i_ModelName, k_FuelType, k_MaxAmountOfFuel)
         {
             this.m_LicenseType = i_LicenseType;
             this.m_EngineVolume = i_EngineVolume;
+            Type = eVehicleType.FuelBasedMotorcycle;
             InitWheels();
         }
 
         /* Unimplemented Properties */
         public eLicenseType LicenseType
         {
-            get { return m_LicenseType; }
+            get { return this.m_LicenseType; }
+            set { this.m_LicenseType = value; }             // Guy addition 14.05
         }
 
         public int EngineVolume
         {
-            get { return m_EngineVolume; }
+            get { return this.m_EngineVolume; }
+            set { this.m_EngineVolume = value; }            // Guy addition 14.05
         }
 
         /* Public Methods */
