@@ -21,6 +21,7 @@ namespace Ex03.GarageLogic
         {
             this.m_Color = eColorType.Unknown;
             this.m_NumOfDoors = eNumOfDoors.Unknown;
+            MaxBatteryLife = k_MaxBatteryLife;
             Type = eVehicleType.ElectricBasedCar;
         }
 

@@ -125,13 +125,13 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
                 else
                 {
                     VehicleDetails details = new VehicleDetails(i_OwnerName, i_OwnerPhone);
-                    details.VehicleStatus = VehicleDetails.eVehicleStatus.Waiting;   // I change the seder
+                    details.VehicleStatus = VehicleDetails.eVehicleStatus.Waiting;
 
                     LicenseNumbersList.Add(i_LicenseNumber, details);
                     VehicleList.Add(i_LicenseNumber, i_Vehicle);
                 }
             }
-            
+
             return wasInserted;
         }
 
@@ -154,13 +154,13 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             {
                 licenseNumbersList = printLicenseNumbersList(LicenseNumbersList);
             }
-            // Print the filter list.
+            // Print the filtered list.
             else
             {
-                Dictionary<string, VehicleDetails> filterDictionary = LicenseNumbersList;
+                Dictionary<string, VehicleDetails> filteredDictionary = LicenseNumbersList;
                 List<string> licenses = getDifferentLicensesStatus(i_FilteringStatus);
-                removeLicenses(filterDictionary, licenses);
-                licenseNumbersList = printLicenseNumbersList(filterDictionary);  // i didn't figure out how to use to string method...
+                removeLicenses(filteredDictionary, licenses);
+                licenseNumbersList = printLicenseNumbersList(filteredDictionary);  // i didn't figure out how to use to string method...
             }
 
             return licenseNumbersList;
@@ -186,61 +186,66 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             // Exception !!!
 
             VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle);       // upcasting!!!
-
+            if (vehicle != null)
+            {
+                vehicle.InflateAllWheels(vehicle.Wheels[0].MaxAirPressure);
+            }
+            /*
             foreach (Wheel wheel in vehicle.Wheels)
             {
                 float currentAirPressure = wheel.CurrentAirPressure;
                 float maxAirPressure = wheel.MaxAirPressure;
                 wheel.Fill(maxAirPressure - currentAirPressure);
             }
+            */
         }
 
 
-        public void RefuelFuelBasedVehicle(                                
+        public void RefuelFuelBasedVehicle(
             string i_LicenseNumber,
             eFuelType i_FuelType,
             float i_RefuelAmount)
         {
-            // Exception !!!
+            // Exception !!!    - No need, the Refuel() method within FuelBasedVehicle.cs checks for it
 
-            // Get the vehicle with respect to his license number.
-            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))   
+            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))
             {
-                // Check if the vehicle is a fuel based car
-                if (vehicle is FuelBasedCar fuelBasedCar)   
+                if (vehicle is FuelBasedVehicle fuelVehicle)
                 {
-                    // Check if the fuel types are identical.
-                    if (i_FuelType.Equals(fuelBasedCar.FuelType))     // down casting !!! bag potential
-                    {                                                 // steel need to check it.
-                        fuelBasedCar.Fill(i_RefuelAmount);
-                    }
+                    fuelVehicle.Refuel(i_RefuelAmount, i_FuelType);             // checks for wrong type of fuel
                 }
             }
+
+
         }
 
         public void ChargeElectricBasedVehicle(
             string i_LicenseNumber,
-            float i_ChargingAmount)
+            float i_ChargingAmountInMins)
         {
-            // Exception ???
-            // TODO: complete.
-
-            // Get the vehicle with respect to his license number.
-            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))   // down casting !!!
+            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))
             {
-                // ???
+                if (vehicle is ElectricBasedVehicle electricVehicle)
+                {
+                    electricVehicle.Charge(i_ChargingAmountInMins);             // checks for wrong type of fuel
+                }
             }
         }
 
 
         public string DisplayVehicleInformation(string i_LicenseNumber)
         {
-            // Exception ???
-            // TODO: complete.
-            return "0";
+            string info = "";
+
+            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))
+            {
+                info = vehicle.ToString();
+            }
+
+            return info;
         }
 
-        
+
 
         /* Private Methods */
         private eVehicleType GetVehicleType(int i_TypeIndex)
@@ -298,7 +303,7 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
         /// </summary>
         /// <param name="i_FilteringStatus"></param>
         /// <returns></returns>
-        private List <string> getDifferentLicensesStatus(
+        private List<string> getDifferentLicensesStatus(
             VehicleDetails.eVehicleStatus i_FilteringStatus)  // How can we make it to be polimorfic?
         {
             List<string> keys = new List<string>();
@@ -317,7 +322,7 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
         }
 
         private void removeLicenses(
-            Dictionary<string, VehicleDetails> i_FilterDictionary, 
+            Dictionary<string, VehicleDetails> i_FilterDictionary,
             List<string> i_Keys)
         {
             foreach (string key in i_Keys)
