@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using static Ex03.GarageLogic.Garage;
-using static Ex03.ConsoleUI.Menues;
 
 
 namespace Ex03.ConsoleUI
@@ -9,178 +8,129 @@ namespace Ex03.ConsoleUI
     public class UI
     {
         /* Const Members */
-
-        public const int k_TypeVehicleMinIndex = 1;
+        public const int k_TypeVehicleMinIndex = 0;
         public const int k_TypeVehicleMaxIndex = 5;
-        public const int k_ColorVehicleMinIndex = 1;
+        public const int k_ColorVehicleMinIndex = 0;
         public const int k_ColorVehicleMaxIndex = 4;
-        public const int k_MinAirPressure = 0;      
-        public const int k_MaxAirPressure = 32;     
-        public const int k_MinFuelAmount = 0;       
-        public const int k_MaxFuelAmount = 115;     
-        public const int k_MinBatteryLife = 0;      
-        public const int k_MaxBatteryLife = 100;    
-        public const int k_TypeLicenseMinIndex = 1;
-        public const int k_TypeLicenseMaxIndex = 4;
-        public const int k_MinEngineVolume = 0;
-        public const int k_MaxEngineVolume = 5000;  // <--- ?!?!?!?!
-        public const int k_MinNumOfDoors = 1;
-        public const int k_MaxNumOfDoors = 4;
-        public const int k_MinIndexIsCooled = 1;
-        public const int k_MaxIndexIsCooled = 2;
-        public const int k_MinVolumeOfCargo = 0;
-        public const int k_MaxVolumeOfCargo = 8000;  // <--- ?!?!?!?
 
         /* Public Methods */
-
-        public static string GetVehicleType()   
+        public static string GetVehicleType() // Try catch ???  
         {
-            return getVehicleDetails(
-                k_TypeVehicleMinIndex,
-                k_TypeVehicleMaxIndex,
-                DisplayVehicleTypes());
+            string choice = "";
+            int result = -1;
+
+            // Display a list of supported vehicles
+            while (result < k_TypeVehicleMinIndex || result > k_TypeVehicleMaxIndex) 
+            {
+                Console.Out.WriteLine(string.Format(
+@"Please select a desired type of Vehicle out of the following:
+1.   Electric Motorcycle
+2.   Electric Car
+3.   Fuel Based Motorcycle
+4.   Fuel Based Car
+5.   Fuel Based Truck"));
+
+                choice = Console.In.ReadLine();
+                int.TryParse(choice, out result);
+            }
+
+            // return user input
+            return choice;
         }
+
 
         public static string GetColorType()
         {
-            return getVehicleDetails(
-                k_ColorVehicleMinIndex,
-                k_ColorVehicleMaxIndex,
-                DisplayColorTypes());
+
+            string choice = "";
+            int result = -1;
+
+            // Display a list of supported vehicles
+            while (result < k_ColorVehicleMinIndex || result > k_ColorVehicleMaxIndex)
+            {
+                Console.Out.WriteLine(string.Format(
+@"Please select a desired color of Vehicle out of the following:
+1.   Gray
+2.   Blue
+3.   White
+4.   Black"));
+
+                choice = Console.In.ReadLine();
+                int.TryParse(choice, out result);
+            }
+
+            // return user input
+            return choice;
         }
 
         public static string GetWheelsAirPressure()
         {
-            return getVehicleDetails(
-                k_MinAirPressure, 
-                k_MaxAirPressure, 
-                DisplayWheelsAirPressure());        
+            return "";
         }
 
-        public static string GetFuelAmount()       
+        public static float GetFuelAmount()       // <-- float.TryParse
         {
-            return getVehicleDetails(
-                k_MinFuelAmount,
-                k_MaxFuelAmount,
-                DisplayWheelsAirPressure());
+            return 0;
         }
 
-        public static string GetRemainingBatteryLife()
+        public static float GetRemainingBatteryLife() // <-- float.TryParse
         {
-            return getVehicleDetails(
-                k_MinBatteryLife,
-                k_MaxBatteryLife,
-                DisplayBstteryLife());
+            return 0;
         }
 
         public static string GetLicenseType()
         {
-            return getVehicleDetails(
-                k_TypeLicenseMinIndex,
-                k_TypeLicenseMaxIndex,
-                DisplayLicenseType());
+            return "";
         }
 
-        public static string GetEngineVolume()    
+        public static int GetEngineVolume()    // <-- int.TryParse  for  motorcycle
         {
-            return getVehicleDetails(
-                k_MinEngineVolume,
-                k_MaxEngineVolume,
-                DisplayEngineVolume());
+            return 0;
         }
 
-        public static string GetNumbersOfDoors()  
+        public static int GetNumbersOfDoors()  // <-- int.TryParse
         {
-            return getVehicleDetails(
-                k_MinNumOfDoors,
-                k_MaxNumOfDoors,
-                DisplayNumbersOfDoors());
+            return 0;
         }
 
-        public static string GetCooled()  // <--- name ?
+        public static bool IsCooled()
         {
-            return getVehicleDetails(
-                k_MinIndexIsCooled,
-                k_MaxIndexIsCooled,
-                DisplayIsCooles());
+            return true;
         }
 
-        public static string GetVolumeOfCargo()  
+        public static float GetVolumeOfCargo()  // <-- float.TryParse  for trunk...
         {
-            return getVehicleDetails(
-                k_MinVolumeOfCargo, 
-                k_MaxVolumeOfCargo, 
-                DisplayVolumeOfCargo());
+            return 0;
         }
 
         public static string GetOwnerName()
         {
-            string name = "";
-            getOwnerDetail(name, DisplayOwnerName());
-            return name;
+            return "";
         }
 
         public static string GetOwnerPhoneNumber()
         {
-            string phoneNumber = "";
-            getOwnerDetail(phoneNumber, DisplayOwnerPhoneNumber());
-            return phoneNumber;
+            return "";
         }
 
         public static string GetLicenseNumber()
         {
-            string licenseNumber = "";
-            getOwnerDetail(licenseNumber, DisplayOwnerLicenseNumber());
-            return licenseNumber;
+            return "";
         }
 
-        /* Private Methods */
-
-        private static string getVehicleDetails(int i_MinValue, int i_MaxVal, string i_AppMessage)
+        public static string GetVehicleStatus()                 // Guy addition 15.05
         {
-            string userAnswer = "";
-            int result = -1;
-
-            try
-            {
-                while (result < i_MinValue || result > i_MaxVal)
-                {
-                    Console.WriteLine(i_AppMessage);
-                    userAnswer = Console.In.ReadLine();
-                    if (!int.TryParse(userAnswer, out result))
-                    {
-                        result = -1;
-                    }
-                }
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine("Catching FormatException");
-                Console.WriteLine(ex.Message);
-            }
-
-            return userAnswer;
+            throw new NotImplementedException();
         }
 
-        private static string getOwnerDetail(string i_Detail, string i_AppMessage)
+        public static string GetFuelType()                      // Guy addition 15.05
         {
-            try
-            {
-                while (i_Detail.Equals(""))
-                {
-                    Console.WriteLine(i_AppMessage);
-                    i_Detail = Console.In.ReadLine();
-                }
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine("Catching FormatException");
-                Console.WriteLine(ex.Message);
+            throw new NotImplementedException();
+        }
 
-                // throw ex; //?????????????????????????
-            }
-
-            return i_Detail;
+        public static string GetAmountOfMinsToCharge()          // Guy addition 15.05
+        {
+            throw new NotImplementedException();
         }
     }
 }
