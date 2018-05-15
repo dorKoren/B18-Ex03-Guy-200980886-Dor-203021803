@@ -39,13 +39,13 @@ namespace Ex03.GarageLogic
         public eColorType Color
         {
             get { return this.m_Color; }
-            set { this.m_Color = value; }           // Guy addition 14.05
+            set { this.m_Color = value; }           
         }
 
         public eNumOfDoors NumOfDoors
         {
             get { return this.m_NumOfDoors; }
-            set { this.m_NumOfDoors = value; }      // Guy addition 14.05
+            set { this.m_NumOfDoors = value; }      
         }
 
         /* Public Methods */

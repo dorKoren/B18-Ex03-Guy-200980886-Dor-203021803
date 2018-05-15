@@ -134,7 +134,7 @@ namespace Ex03.GarageLogic
             set { m_Wheels = value; }
         }
 
-        public eVehicleType Type                    // Guy addition 14.05
+        public eVehicleType Type                    
         {
             get { return this.m_Type; }
             set { this.m_Type = value; }
@@ -159,7 +159,7 @@ namespace Ex03.GarageLogic
         /// </summary>
         /// <param name="i_MaxAirPressure"></param>
         /// <returns></returns>
-        public bool InflateAllWheels(float i_MaxAirPressure)                        // Guy addition 14.05
+        public bool InflateAllWheels(float i_MaxAirPressure)                        
         {
             bool hasInflatedAllWheels = false;
             int numOfInflatedWheels = 0;

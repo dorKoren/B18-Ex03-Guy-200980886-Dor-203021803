@@ -126,10 +126,6 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             return wasInserted;
         }
 
-
-
-
-
         /// <summary>
         /// Display a list of license numbers currently in the garage, with a
         /// filtering option based on the status of each vehicle.
@@ -157,13 +153,10 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             return licenseNumbersList;
         }
 
-
-
         public void ChangeVehicleStatus(
             string i_LicenseNumber,
             eVehicleStatus i_DesiredStatus)
         {
-            // Exception !!!
 
             if (i_LicenseNumber != "")
             {
@@ -174,22 +167,18 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
 
         public void InflateTiresToMaximum(string i_LicenseNumber)
         {
-            // Exception !!!
-
-            VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle);       // upcasting!!!
+            VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle);       
             if (vehicle != null)
             {
                 vehicle.InflateAllWheels(vehicle.Wheels[0].MaxAirPressure);
             }
         }
 
-
         public void RefuelFuelBasedVehicle(
             string i_LicenseNumber,
             eFuelType i_FuelType,
             float i_RefuelAmount)
         {
-            // Exception !!!    - No need, the Refuel() method within FuelBasedVehicle.cs checks for it
 
             if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))
             {
@@ -213,7 +202,6 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             }
         }
 
-
         public string DisplayVehicleInformation(string i_LicenseNumber)
         {
             string vehicleInformation = "";
@@ -223,41 +211,13 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             {
                 vehicleInformation = string.Format(
 @"{0}
-{1}", vehicleDetails.ToString(), vehicleSpecification(vehicle));
+{1}", vehicleDetails.ToString(), vehicle.ToString());
             }
 
             return vehicleInformation;
         }
 
         /* Private Methods */
-        private eVehicleType GetVehicleType(int i_TypeIndex)
-        {
-            eVehicleType type = eVehicleType.None;
-            switch (i_TypeIndex)
-            {
-                case (1):
-                    type = eVehicleType.ElectricBasedMotorcycle;
-                    break;
-
-                case (2):
-                    type = eVehicleType.ElectricBasedCar;
-                    break;
-
-                case (3):
-                    type = eVehicleType.FuelBasedMotorcycle;
-                    break;
-
-                case (4):
-                    type = eVehicleType.FuelBasedCar;
-                    break;
-
-                case (5):
-                    type = eVehicleType.FuelBasedTruck;
-                    break;
-            }
-
-            return type;
-        }
 
         private string printLicenseNumbersList(
             Dictionary<string, VehicleDetails> i_LicenseNumbers)  // How can we make it to be polimorfic?
@@ -311,40 +271,6 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             {
                 i_FilterDictionary.Remove(key);
             }
-        }
-
-        private string vehicleSpecification(Vehicle i_Vehicle)
-        {
-            string specification;
-
-            switch (i_Vehicle.Type)
-            {
-                case (eVehicleType.ElectricBasedCar):
-                    specification = (i_Vehicle as ElectricBasedCar).ToString();
-                    break;
-
-                case (eVehicleType.ElectricBasedMotorcycle):
-                    specification = (i_Vehicle as ElectricBasedMotorcycle).ToString();
-                    break;
-
-                case (eVehicleType.FuelBasedCar):
-                    specification = (i_Vehicle as FuelBasedCar).ToString();
-                    break;
-
-                case (eVehicleType.FuelBasedMotorcycle):
-                    specification = (i_Vehicle as FuelBasedMotorcycle).ToString();
-                    break;
-
-                case (eVehicleType.FuelBasedTruck):
-                    specification = (i_Vehicle as FuelBasedTruck).ToString();
-                    break;
-
-                default:
-                    specification = "";
-                    break;
-            }
-
-            return specification;
         }
     }
 }

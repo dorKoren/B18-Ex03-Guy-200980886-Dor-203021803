@@ -1,14 +1,17 @@
 ﻿using Ex03.GarageLogic;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using static Ex03.GarageLogic.Enums;
-using static Ex03.GarageLogic.VehicleMaker;
+using static Ex03.ConsoleUI.Menues;
+using static Ex03.ConsoleUI.UI;
+using static Ex03.ConsoleUI.Menues.MainMenu;
+using System.Linq;
 
 namespace Ex03.ConsoleUI
 {
     public class Engine
     {
+        
+        /* Regular Members */    
         private Garage m_Garage;
 
         /*  Constructor  */
@@ -20,65 +23,56 @@ namespace Ex03.ConsoleUI
         /* Properties */
         public Garage Garage
         {
-            get { return this.m_Garage; }
-            set { this.m_Garage = value; }
+            get { return m_Garage; }
+            set { m_Garage = value; }
         }
 
         /* Public Methods */
-        public static void Run()
+        public void Run()
         {
-
-            Console.WriteLine(DisplayMenu());
-
+            string menuOption = GetMainMenuOption();
+            int exit = (int)MainMenu.eMainMenuOptions.Exit;
+            // While the user donesn't want to exit from the app
+            while (int.Parse(menuOption) != exit)  
+            {
+               navigateTo(menuOption);
+               menuOption = GetMainMenuOption();  // bag potential?..
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         /* Private Methods */
-        private static string DisplayMenu()
+        private void navigateTo(string i_ChoiceIndex)
         {
-            return string.Format(
-@"
- _______________________________________________________________
-| Please choose from the following operations:                  |
-|---------------------------------------------------------------|
-| 1. Insert a Vehicle into the garage.                          |
-| 2. Display a list of license numbers currently in the garage. |
-| 3. Change a certain vehicle’s status.                         |
-| 4. Inflate tires to maximum.                                  |
-| 5. Refuel vehicle.                                            |
-| 6. Charge vehicle.                                            |
-| 7. Display vehicle information.                               |
-|_______________________________________________________________| ");
+            eMainMenuOptions choice = (eMainMenuOptions)Enum.Parse(typeof(eMainMenuOptions), i_ChoiceIndex);
+            switch (choice)
+            {
+                case (eMainMenuOptions.InsertVehicle):
+                    insertVehicleToGarage();
+                    break;
+                case (eMainMenuOptions.DisplayListOfLicenseNumbers):
+                    displayLicenseNumberByStatus();
+                    break;
+                case (eMainMenuOptions.ChangeVehicleStatus):
+                    changeVehicleStatus();
+                    break;
+                case (eMainMenuOptions.InflateTiresToMaximum):
+                    inflateAllWheelsToMax();
+                    break;
+                case (eMainMenuOptions.RefuelVehicle):
+                    refuleVehicle();
+                    break;
+                case (eMainMenuOptions.ChargeVehicle):
+                    rechargeVehicle();
+                    break;
+                case (eMainMenuOptions.DisplayVehicleInformation):
+                    displayVehicleDetails();
+                    break;
+                default:
+                    // None or Exit
+                    break;            
+            }
         }
 
-        private static string DisplayLisenceNumbersMenu()
-        {
-            return string.Format(
-@"
- _______________________________________________________________
-| Please select a ststus to filter the list by:                 |
-|---------------------------------------------------------------|
-| 1. None (display all)                                         |
-| 2. Waiting                                                    |
-| 3. In repair                                                  |
-| 4. Repaired                                                   |
-| 5. Payed                                                      |
-|_______________________________________________________________| ");
-        }
 
         /// <summary>
         /// This method deals with insertion of a Vehicle into the garage.
@@ -108,11 +102,10 @@ namespace Ex03.ConsoleUI
 
             while (userChoice == "")
             {
-                DisplayLisenceNumbersMenu();                        // I think it should display it in the UI.GetVehicleStatus()
                 userChoice = UI.GetVehicleStatus();
             }
 
-            eVehicleStatus status = parseVehicleStatus(userChoice);
+            eVehicleStatus status = (eVehicleStatus)Enum.Parse(typeof(eVehicleStatus),userChoice);  // bug potential
             Garage.DisplayLicenseNumbersList(status);
         }
 
@@ -132,7 +125,7 @@ namespace Ex03.ConsoleUI
 
             if (Garage.VehicleList.TryGetValue(licenseNumber, out Vehicle vehicle))
             {
-                eVehicleStatus status = parseVehicleStatus(newStatus);
+                eVehicleStatus status = (eVehicleStatus)Enum.Parse(typeof(eVehicleStatus), newStatus);
             }
             else
             {
@@ -147,9 +140,10 @@ namespace Ex03.ConsoleUI
         private void inflateAllWheelsToMax()
         {
             string licenseNumber = "";
+
             while (licenseNumber == "")
             {
-                licenseNumber = UI.GetLicenseNumber();
+                licenseNumber = GetLicenseNumber();
             }
 
             if (Garage.VehicleList.TryGetValue(licenseNumber, out Vehicle vehicle))
@@ -162,7 +156,7 @@ namespace Ex03.ConsoleUI
             }
             else
             {
-                // throw new VehicleIsNotInGarage();
+                // throw new VehicleIsNotInGarageException();
             }
         }
 

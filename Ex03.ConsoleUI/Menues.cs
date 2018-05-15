@@ -6,7 +6,26 @@ namespace Ex03.ConsoleUI
 {
     public static class Menues
     {
-        public static string DisplayMenue()
+        /* Nested Class */
+        public class MainMenu
+        {
+            /* Enum */
+            public enum eMainMenuOptions
+            {
+                None,
+                InsertVehicle,
+                DisplayListOfLicenseNumbers,
+                ChangeVehicleStatus,
+                InflateTiresToMaximum,
+                RefuelVehicle,
+                ChargeVehicle,
+                DisplayVehicleInformation,
+                Exit
+            }
+        }
+
+        /********** End of nested class ************/
+        public static string DisplayMenu()
         {
             return string.Format(
 @"
@@ -20,6 +39,7 @@ namespace Ex03.ConsoleUI
   | 5. Refuel vehicle.                                            |
   | 6. Charge vehicle.                                            |
   | 7. Display vehicle information.                               |
+  | 8. Exit.                                                      |
   |_______________________________________________________________| ");
         }
 
@@ -36,6 +56,7 @@ namespace Ex03.ConsoleUI
   | 3.   Fuel Based Motorcycle                                    |
   | 4.   Fuel Based Car                                           |
   | 5.   Fuel Based Truck                                         |
+  |                                                               |
   |                                                               |
   |                                                               |
   |_______________________________________________________________| ");
@@ -56,6 +77,7 @@ namespace Ex03.ConsoleUI
   |                                                               |
   |                                                               |
   |                                                               |
+  |                                                               |
   |_______________________________________________________________| ");
 
         }
@@ -68,6 +90,7 @@ namespace Ex03.ConsoleUI
   | Please enter your wheels air pressure:                        |
   |---------------------------------------------------------------|                                                    
   |  Wheels air fressure: ___                                     |
+  |                                                               |
   |                                                               |
   |                                                               |
   |                                                               |
@@ -92,6 +115,7 @@ namespace Ex03.ConsoleUI
   |                                                               |
   |                                                               |
   |                                                               |
+  |                                                               |
   |_______________________________________________________________| ");
 
         }
@@ -104,6 +128,7 @@ namespace Ex03.ConsoleUI
   | Please enter your battery life ammount:                       |
   |---------------------------------------------------------------|                                                    
   |  battery life ammount: ___                                    |
+  |                                                               |
   |                                                               |
   |                                                               |
   |                                                               |
@@ -127,6 +152,7 @@ namespace Ex03.ConsoleUI
   |                                                               |
   |                                                               |
   |                                                               |
+  |                                                               |
   |_______________________________________________________________| ");
 
         }
@@ -139,6 +165,7 @@ namespace Ex03.ConsoleUI
   | Please enter your engine volume:                              |
   |---------------------------------------------------------------|                                                    
   |  engine volume: ___                                           |
+  |                                                               |
   |                                                               |
   |                                                               |
   |                                                               |
@@ -159,6 +186,7 @@ namespace Ex03.ConsoleUI
   |  2. Three                                                     |
   |  3. Four                                                      |
   |  4. Five                                                      |
+  |                                                               |
   |                                                               |
   |                                                               |
   |                                                               |
@@ -196,6 +224,7 @@ namespace Ex03.ConsoleUI
   |                                                               |
   |                                                               |
   |                                                               |
+  |                                                               |
   |_______________________________________________________________| ");
         }
 
@@ -207,6 +236,7 @@ namespace Ex03.ConsoleUI
   | Please enter owner name:                                      |
   |---------------------------------------------------------------|                                                    
   |  Owner name: ___                                              |
+  |                                                               |
   |                                                               |
   |                                                               |
   |                                                               |
@@ -231,6 +261,7 @@ namespace Ex03.ConsoleUI
   |                                                               |
   |                                                               |
   |                                                               |
+  |                                                               |
   |_______________________________________________________________| ");
         }
 
@@ -242,6 +273,7 @@ namespace Ex03.ConsoleUI
   | Please enter owner license number:                            |
   |---------------------------------------------------------------|                                                    
   |  Owner license number: ___                                    |
+  |                                                               |
   |                                                               |
   |                                                               |
   |                                                               |
