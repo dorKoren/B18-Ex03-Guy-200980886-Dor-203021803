@@ -185,6 +185,19 @@ namespace Ex03.GarageLogic
             return hasInflatedAllWheels;
         }
 
+        /// <summary>
+        /// This method checks if this vehicle has any wheels assigned to it.
+        /// </summary>
+        /// <returns></returns>
+        public bool hasAnyWheels()
+        {
+            return (Wheels.Count > 0);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
 

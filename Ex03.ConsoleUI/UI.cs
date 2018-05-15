@@ -118,7 +118,19 @@ namespace Ex03.ConsoleUI
             return "";
         }
 
+        public static string GetVehicleStatus()                 // Guy addition 15.05
+        {
+            throw new NotImplementedException();
+        }
 
+        public static string GetFuelType()                      // Guy addition 15.05
+        {
+            throw new NotImplementedException();
+        }
 
+        public static string GetAmountOfMinsToCharge()          // Guy addition 15.05
+        {
+            throw new NotImplementedException();
+        }
     }
 }
