@@ -14,12 +14,12 @@ namespace Ex03.ConsoleUI
         public const int k_TypeVehicleMaxIndex = 5;
         public const int k_ColorVehicleMinIndex = 1;
         public const int k_ColorVehicleMaxIndex = 4;
-        public const int k_MinAirPressure = 0;      
-        public const int k_MaxAirPressure = 32;     
-        public const int k_MinFuelAmount = 0;       
-        public const int k_MaxFuelAmount = 115;     
-        public const int k_MinBatteryLife = 0;      
-        public const int k_MaxBatteryLife = 100;    
+        public const int k_MinAirPressure = 0;
+        public const int k_MaxAirPressure = 32;
+        public const int k_MinFuelAmount = 0;
+        public const int k_MaxFuelAmount = 115;
+        public const int k_MinBatteryLife = 0;
+        public const int k_MaxBatteryLife = 100;
         public const int k_TypeLicenseMinIndex = 1;
         public const int k_TypeLicenseMaxIndex = 4;
         public const int k_MinEngineVolume = 0;
@@ -33,7 +33,7 @@ namespace Ex03.ConsoleUI
 
         /* Public Methods */
 
-        public static string GetVehicleType()   
+        public static string GetVehicleType()
         {
             return getVehicleDetails(
                 k_TypeVehicleMinIndex,
@@ -52,12 +52,12 @@ namespace Ex03.ConsoleUI
         public static string GetWheelsAirPressure()
         {
             return getVehicleDetails(
-                k_MinAirPressure, 
-                k_MaxAirPressure, 
-                DisplayWheelsAirPressure());        
+                k_MinAirPressure,
+                k_MaxAirPressure,
+                DisplayWheelsAirPressure());
         }
 
-        public static string GetFuelAmount()       
+        public static string GetFuelAmount()
         {
             return getVehicleDetails(
                 k_MinFuelAmount,
@@ -81,7 +81,7 @@ namespace Ex03.ConsoleUI
                 DisplayLicenseType());
         }
 
-        public static string GetEngineVolume()    
+        public static string GetEngineVolume()
         {
             return getVehicleDetails(
                 k_MinEngineVolume,
@@ -89,7 +89,7 @@ namespace Ex03.ConsoleUI
                 DisplayEngineVolume());
         }
 
-        public static string GetNumbersOfDoors()  
+        public static string GetNumbersOfDoors()
         {
             return getVehicleDetails(
                 k_MinNumOfDoors,
@@ -105,11 +105,11 @@ namespace Ex03.ConsoleUI
                 DisplayIsCooles());
         }
 
-        public static string GetVolumeOfCargo()  
+        public static string GetVolumeOfCargo()
         {
             return getVehicleDetails(
-                k_MinVolumeOfCargo, 
-                k_MaxVolumeOfCargo, 
+                k_MinVolumeOfCargo,
+                k_MaxVolumeOfCargo,
                 DisplayVolumeOfCargo());
         }
 
@@ -134,6 +134,22 @@ namespace Ex03.ConsoleUI
             return licenseNumber;
         }
 
+        public static string GetVehicleStatus()                 // Guy addition 15.05
+        {
+            throw new NotImplementedException();
+        }
+
+        public static string GetFuelType()                      // Guy addition 15.05
+        {
+            throw new NotImplementedException();
+        }
+
+        public static string GetAmountOfMinsToCharge()          // Guy addition 15.05
+        {
+            throw new NotImplementedException();
+        }
+
+
         /* Private Methods */
 
         private static string getVehicleDetails(int i_MinValue, int i_MaxVal, string i_AppMessage)
@@ -157,12 +173,32 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("Catching FormatException");
                 Console.WriteLine(ex.Message);
+
+                throw ex;   // ?!?!?!?!?!?!?
             }
 
             return userAnswer;
         }
 
+        private static string getOwnerDetail(string i_Detail, string i_AppMessage)
+        {
+            try
+            {
+                while (i_Detail.Equals(""))
+                {
+                    Console.WriteLine(i_AppMessage);
+                    i_Detail = Console.In.ReadLine();
+                }
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Catching FormatException");
+                Console.WriteLine(ex.Message);
 
+                throw ex;   // ?!?!?!?!?!?!?
+            }
 
+            return i_Detail;
+        }
     }
 }

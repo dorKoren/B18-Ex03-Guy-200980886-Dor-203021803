@@ -183,7 +183,7 @@ namespace Ex03.ConsoleUI
                 while (fuelType == "") { fuelType = UI.GetFuelType(); }
                 while (amountOfFuel == "")
                 {
-                    amount = UI.GetFuelAmount();
+                    //amount = UI.GetFuelAmount();    // dortal bag
                     amountOfFuel = amount.ToString(); 
                 }
             }
