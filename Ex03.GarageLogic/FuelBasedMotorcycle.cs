@@ -62,12 +62,9 @@ namespace Ex03.GarageLogic
         {
             return string.Format(
 @"Fuel Based Motorcycle:
-" + base.ToString() +
-@"License Type: {0} 
-Engine volume: {1}", LicenseType, EngineVolume);
+{0}
+License Type: {1} 
+Engine volume: {2}", base.ToString(), LicenseType, EngineVolume);
         }
-
-
-
     }
 }

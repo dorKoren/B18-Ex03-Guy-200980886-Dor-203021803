@@ -59,9 +59,9 @@ namespace Ex03.GarageLogic
         {
             return string.Format(
 @"Fuel Based Truck:
-" + base.ToString() +
-@"Is Cooled: {0} 
-Volume of cargo: {1}", IsCooled, VolumeOfCargo);
+{0}
+Is Cooled: {1} 
+Volume of cargo: {2}",base.ToString(), IsCooled, VolumeOfCargo);
         }
     }
 }
