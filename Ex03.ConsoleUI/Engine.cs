@@ -97,8 +97,7 @@ namespace Ex03.ConsoleUI
 
             if (Garage.VehicleIsAlreadyInTheGarage(licenseNumber))
             {
-                // Console.WriteLine(string.Format(DisplayVehicleIsAlreadyInTheGarage(licenseNumber)));     <----- If the license plate was found we need to change its status into "Waiting"
-                // TODO: Implement
+                Console.WriteLine(string.Format(DisplayVehicleIsAlreadyInTheGarage(licenseNumber)));  //   <----- If the license plate was found we need to change its status into "Waiting"
             }
             else
             {
