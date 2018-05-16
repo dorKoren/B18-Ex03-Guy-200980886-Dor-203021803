@@ -6,6 +6,7 @@ using static Ex03.ConsoleUI.Menues;
 using static Ex03.ConsoleUI.UI;
 using static Ex03.ConsoleUI.Menues.MainMenu;
 using System.Linq;
+using static Ex03.GarageLogic.Garage;
 
 namespace Ex03.ConsoleUI
 {
@@ -196,7 +197,7 @@ namespace Ex03.ConsoleUI
             }
 
             eVehicleStatus status = (eVehicleStatus)Enum.Parse(typeof(eVehicleStatus), userChoice);  // bug potential
-            Garage.DisplayLicenseNumbersList(status);
+            Console.WriteLine(Garage.DisplayLicenseNumbersList(status));
         }
 
         /// <summary>
@@ -216,6 +217,8 @@ namespace Ex03.ConsoleUI
             if (Garage.VehicleList.TryGetValue(licenseNumber, out Vehicle vehicle))
             {
                 eVehicleStatus status = (eVehicleStatus)Enum.Parse(typeof(eVehicleStatus), newStatus);
+                Garage.LicenseNumbersList.TryGetValue(licenseNumber, out VehicleDetails ownerDetails);
+                ownerDetails.VehicleStatus = status;
             }
             else
             {

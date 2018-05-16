@@ -14,7 +14,7 @@ namespace Ex03.ConsoleUI
     {
         public static void Main()
         {
-            //Engine engine = new Engine();
+            Engine engine = new Engine();
             //engine.Run();
 
             Garage garage = new Garage();
@@ -23,13 +23,23 @@ namespace Ex03.ConsoleUI
 
             FuelBasedCar fc = new FuelBasedCar("VolksWagen", "0000002", Enums.eColorType.Black, Enums.eNumOfDoors.Four);
 
-            garage.Insert(ec, "0000001", "Guy", "0509933321");
-            garage.Insert(fc, "0000002", "Dor", "0545206551");
-
+            FuelBasedMotorcycle fm = new FuelBasedMotorcycle();
             ElectricBasedMotorcycle em = new ElectricBasedMotorcycle();
             FuelBasedTruck ft = new FuelBasedTruck();
 
-            Console.WriteLine(ft.ToString());
+            garage.Insert(ec, "0000001", "Guy", "0509933321");
+            garage.Insert(fc, "0000002", "Dor", "0545206551");
+            garage.Insert(em, "0000003", "TamiTamir", "0509933321");
+            em.Wheels[0].CurrentAirPressure = 10;
+            garage.Insert(fm, "0000004", "GeorgeBush", "0545206551"); 
+            garage.Insert(ft, "0000005", "WillSmith", "0545206551");
+
+            engine.Garage = garage;
+            engine.Run();
+
+
+
+
 
             //Console.WriteLine(garage.DisplayVehicleInformation("4958611"));
 

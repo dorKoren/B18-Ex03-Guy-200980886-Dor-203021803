@@ -283,6 +283,26 @@ namespace Ex03.ConsoleUI
   |_______________________________________________________________| ");
         }
 
+
+
+        public static string DisplayVehicleStatus()
+        {
+            return string.Format(
+@"
+   _______________________________________________________________
+  | Please select a desired Vehicle status:                       |
+  |---------------------------------------------------------------|                                                    
+  |  1. Waiting                                                   |
+  |  2. In repair                                                 |
+  |  3. Repaired                                                  |
+  |  4. Payed for                                                 |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |_______________________________________________________________| ");
+        }
+        
         public static string DisplayVehicleIsAlreadyInTheGarage(string i_LicenseNumber)
         {
             return string.Format(

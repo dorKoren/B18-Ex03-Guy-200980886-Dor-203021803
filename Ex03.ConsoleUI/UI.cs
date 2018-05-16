@@ -98,7 +98,9 @@ namespace Ex03.ConsoleUI
         public static string GetVehicleStatus()
         {
 
-            throw new NotImplementedException();
+            string vehicleStatus;
+            getVehicleStatus(out vehicleStatus, DisplayVehicleStatus());
+            return vehicleStatus;
         }
 
         public static string GetFuelType()
@@ -159,6 +161,25 @@ namespace Ex03.ConsoleUI
             }
 
             return o_Detail;
+        }
+
+        private static void getVehicleStatus(out string i_VehicleStatus, string i_AppMessage)
+        {
+            i_VehicleStatus = "";
+
+            try
+            {
+                while (i_VehicleStatus.Equals(""))
+                {
+                    Console.WriteLine(i_AppMessage);
+                    i_VehicleStatus = Console.In.ReadLine();
+                }
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Catching FormatException");
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
