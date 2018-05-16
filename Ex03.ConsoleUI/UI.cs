@@ -21,13 +21,13 @@ namespace Ex03.ConsoleUI
 
         public static string GetVehicleType()
         {
-            int numOfTypes = Enum.GetNames(typeof(eVehicleType)).Length;                
+            int numOfTypes = Enum.GetNames(typeof(eVehicleType)).Length - 1; //  len - 1           
             return getVehicleDetails(DisplayVehicleTypes(), numOfTypes);
         }
 
         public static string GetColorType()
         {
-            int numOfTypes = Enum.GetNames(typeof(eColorType)).Length;
+            int numOfTypes = Enum.GetNames(typeof(eColorType)).Length - 1; //  len - 1
             return getVehicleDetails(DisplayColorTypes(), numOfTypes);
         }
 
@@ -48,7 +48,7 @@ namespace Ex03.ConsoleUI
 
         public static string GetLicenseType()
         {
-            int numOfTypes = Enum.GetNames(typeof(eLicenseType)).Length;
+            int numOfTypes = Enum.GetNames(typeof(eLicenseType)).Length - 1; //  len - 1
             return getVehicleDetails(DisplayLicenseType(), numOfTypes);
         }
 
@@ -59,11 +59,11 @@ namespace Ex03.ConsoleUI
 
         public static string GetNumbersOfDoors()
         {
-            int numOfTypes = Enum.GetNames(typeof(eNumOfDoors)).Length;
+            int numOfTypes = Enum.GetNames(typeof(eNumOfDoors)).Length - 1; //  len - 1
             return getVehicleDetails(DisplayNumbersOfDoors(), numOfTypes);
         }
 
-        public static string GetCooled()  // <--- name ?
+        public static string GetCooled() 
         {
             return getVehicleDetails(DisplayIsCooles(), int.MaxValue); // <---
         }
@@ -76,30 +76,32 @@ namespace Ex03.ConsoleUI
         public static string GetOwnerName()
         {
             string name = "";
-            getOwnerDetail(name, DisplayOwnerName());
+            getOwnerDetail(out name, DisplayOwnerName());
             return name;
         }
 
         public static string GetOwnerPhoneNumber()
         {
             string phoneNumber = "";
-            getOwnerDetail(phoneNumber, DisplayOwnerPhoneNumber());
+            getOwnerDetail(out phoneNumber, DisplayOwnerPhoneNumber());
             return phoneNumber;
         }
 
         public static string GetLicenseNumber()
         {
-            string licenseNumber = "";
-            getOwnerDetail(licenseNumber, DisplayOwnerLicenseNumber());
+            string licenseNumber;
+            getOwnerDetail(out licenseNumber, DisplayOwnerLicenseNumber());
             return licenseNumber;
+
         }
 
-        public static string GetVehicleStatus()                 // Guy addition 15.05
-        {
+        public static string GetVehicleStatus()              
+        {   
+
             throw new NotImplementedException();
         }
 
-        public static string GetFuelType()                      // Guy addition 15.05
+        public static string GetFuelType()                     
         {
             throw new NotImplementedException();
         }
@@ -138,14 +140,16 @@ namespace Ex03.ConsoleUI
             return userAnswer;
         }
 
-        private static string getOwnerDetail(string i_Detail, string i_AppMessage)
+        private static string getOwnerDetail(out string o_Detail, string i_AppMessage)
         {
+            o_Detail = "";
+
             try
             {
-                while (i_Detail.Equals(""))
+                while (o_Detail.Equals(""))
                 {
                     Console.WriteLine(i_AppMessage);
-                    i_Detail = Console.In.ReadLine();
+                    o_Detail = Console.In.ReadLine();
                 }
             }
             catch (FormatException ex)
@@ -154,7 +158,7 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine(ex.Message);
             }
 
-            return i_Detail;
+            return o_Detail;
         }
     }
 }

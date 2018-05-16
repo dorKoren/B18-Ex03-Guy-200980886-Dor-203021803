@@ -1,6 +1,7 @@
 ﻿using Ex03.GarageLogic;
 using System;
 using static Ex03.GarageLogic.Enums;
+using static Ex03.GarageLogic.VehicleMaker;
 using static Ex03.ConsoleUI.Menues;
 using static Ex03.ConsoleUI.UI;
 using static Ex03.ConsoleUI.Menues.MainMenu;
@@ -24,7 +25,7 @@ namespace Ex03.ConsoleUI
         public Garage Garage
         {
             get { return m_Garage; }
-            set { m_Garage = value; }
+            set { m_Garage = value; }  // <-- for what we need set??
         }
 
         /* Public Methods */
@@ -80,8 +81,96 @@ namespace Ex03.ConsoleUI
         /// </summary>
         private void insertVehicleToGarage()
         {
+            // “Insert” a new vehicle into the garage. The user will be asked to 
+            // select a vehicle type out of the supported vehicle types, and to 
+            // input the license number of the vehicle. If the vehicle is already 
+            // in the garage (based on license number) the system will display an
+            // appropriate message and will use the vehicle in the garage 
+            // (and will change the vehicle status to “In Repair”), if not, a new
+            // object of that vehicle type will be created and the user will be 
+            // prompted to input the values for the properties of his vehicle, 
+            // according to the type of vehicle he wishes to add.
+
+            string licenseNumber = GetLicenseNumber();
+            string ownerName;
+            string ownerPhone;
+
+            if (Garage.VehicleIsAlreadyInTheGarage(licenseNumber))
+            {
+                Console.WriteLine(string.Format(DisplayVehicleIsAlreadyInTheGarage(licenseNumber)));
+            }
+            else
+            {
+                ownerName = GetOwnerName();
+                ownerPhone = GetOwnerPhoneNumber();
+                eVehicleType vehicleType = (eVehicleType)Enum.Parse(typeof(eVehicleType), GetVehicleType());
+                Vehicle vehicle;
+                GarageLogic.VehicleMaker.MakeNewVehicle(vehicleType, out vehicle);
+
+                setVehicleDetails(vehicle);  
+
+                Garage.Insert(vehicle, licenseNumber, ownerName, ownerPhone);
+            }
+        }
+
+
+        private void setVehicleDetails(Vehicle i_Vehicle)  // maybe by ref ???
+        {
+            switch(i_Vehicle.Type)
+            {
+                case (eVehicleType.ElectricBasedCar):
+                    setElectricBasedCar(i_Vehicle);
+                    break;
+
+                case (eVehicleType.ElectricBasedMotorcycle):
+                    setElectricBasedMotorcycle(i_Vehicle);
+                    break;
+
+                case (eVehicleType.FuelBasedCar):
+                    setFuelBasedCar(i_Vehicle);
+                    break;
+
+                case (eVehicleType.FuelBasedMotorcycle):
+                    setFuelBasedMotorcycle(i_Vehicle);
+                    break;
+
+                case (eVehicleType.FuelBasedTruck):
+                    setFuelBasedTruck(i_Vehicle);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void setElectricBasedCar(Vehicle i_Vehicle)
+        {
+            
+        }
+
+        private void setElectricBasedMotorcycle(Vehicle i_Vehicle)
+        {
 
         }
+
+        private void setFuelBasedCar(Vehicle i_Vehicle)
+        {
+
+        }
+
+        private void setFuelBasedMotorcycle(Vehicle i_Vehicle)
+        {
+
+        }
+
+        private void setFuelBasedTruck(Vehicle i_Vehicle)
+        {
+
+        }
+
+
+
+
 
         /// <summary>
         /// This method creates a new vehicle by the user demands (communication via UI)
@@ -94,7 +183,8 @@ namespace Ex03.ConsoleUI
         }
 
         /// <summary>
-        /// This method deals with the display of the license-numbers list, by status (Waiting, InRepair etc).
+        /// This method deals with the display of the license-numbers list
+        /// , by status (Waiting, InRepair etc).
         /// </summary>
         private void displayLicenseNumberByStatus()
         {

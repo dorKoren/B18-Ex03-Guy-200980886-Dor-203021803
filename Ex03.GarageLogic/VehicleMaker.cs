@@ -11,37 +11,36 @@ namespace Ex03.GarageLogic
     {
 
         /* Public Methods */
-        public static Vehicle MakeNewVehicle(eVehicleType i_VehicleType)
+        public static void MakeNewVehicle(eVehicleType i_VehicleType, out Vehicle o_Vehicle)
         {
-            Vehicle newVehicle = null;   // Bag Potential ! we need to think about corect exception!
+            //Vehicle newVehicle = null;   // Bag Potential ! we need to think about corect exception!
+            o_Vehicle = null;
 
             switch (i_VehicleType)
             {
                 case (eVehicleType.ElectricBasedMotorcycle):
-                    newVehicle = new ElectricBasedMotorcycle();
+                    o_Vehicle = new ElectricBasedMotorcycle();
                     break;
 
                 case (eVehicleType.ElectricBasedCar):
-                    newVehicle = new ElectricBasedCar();
+                    o_Vehicle = new ElectricBasedCar();
                     break;
 
                 case (eVehicleType.FuelBasedMotorcycle):
-                    newVehicle = new FuelBasedMotorcycle();
+                    o_Vehicle = new FuelBasedMotorcycle();
                     break;
 
                 case (eVehicleType.FuelBasedCar):
-                    newVehicle = new FuelBasedCar();
+                    o_Vehicle = new FuelBasedCar();
                     break;
                
                 case (eVehicleType.FuelBasedTruck):
-                    newVehicle = new FuelBasedTruck();
+                    o_Vehicle = new FuelBasedTruck();
                     break;
 
                 default:
                     break;
             }
-
-            return newVehicle;
         }
 
     }

@@ -54,13 +54,11 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             }
         }
 
-
         /**************************** End Of Inner Class ***********************/
-
 
         /* Regular Members */
         private Dictionary<string, VehicleDetails> m_LicenseNumbersList;  // <license number, vehicle details>  
-        private Dictionary<string, Vehicle> m_VehicleList;
+        private Dictionary<string, Vehicle> m_VehicleList;                // <license number, vehicle>
 
         /* Constructor */
         public Garage()
@@ -95,36 +93,45 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
         /// according to the type of vehicle he wishes to add.
         /// </summary>
         /// <param name="i_Vehicle"></param>
-        public bool Insert(           // <---- we should test it seperately!
+        public void Insert(           
             Vehicle i_Vehicle,
-            string i_LicenseNumber,
-            string i_OwnerName,
+            string  i_LicenseNumber,
+            string  i_OwnerName,
             string i_OwnerPhone)
         {
-            bool wasInserted = false;
-
             if (i_LicenseNumber != "" && i_OwnerName != "" && i_OwnerPhone != "")
             {
                 // If we have this vehicle in this garage, change its status
-                if (LicenseNumbersList.ContainsKey(i_LicenseNumber))
+                if (VehicleIsAlreadyInTheGarage(i_LicenseNumber))
                 {
-                    wasInserted = LicenseNumbersList.TryGetValue(i_LicenseNumber, out VehicleDetails value) ? !wasInserted : wasInserted;
-
-                    value.VehicleStatus = eVehicleStatus.InRepair;     // Maybe need to change 
+                    LicenseNumbersList.TryGetValue(i_LicenseNumber, out VehicleDetails value);
+                    value.VehicleStatus = eVehicleStatus.InRepair;                
                 }
                 // If we don't have this vehicle in this garage, add it
                 else
                 {
-                    VehicleDetails details = new VehicleDetails(i_OwnerName, i_OwnerPhone);
-                    details.VehicleStatus = eVehicleStatus.Waiting;
+                    VehicleDetails details = new VehicleDetails(i_OwnerName, i_OwnerPhone)
+                    {
+                        VehicleStatus = eVehicleStatus.Waiting
+                    };
 
                     LicenseNumbersList.Add(i_LicenseNumber, details);
                     VehicleList.Add(i_LicenseNumber, i_Vehicle);
                 }
             }
-
-            return wasInserted;
         }
+
+        /// <summary>
+        /// Check if the vehicle is already in the garage.
+        /// </summary>
+        /// <param name="i_LicenseNumber"></param>
+        /// <returns></returns>
+        public bool VehicleIsAlreadyInTheGarage(string i_LicenseNumber)
+        {
+            return LicenseNumbersList.ContainsKey(i_LicenseNumber);
+        }
+
+
 
         /// <summary>
         /// Display a list of license numbers currently in the garage, with a

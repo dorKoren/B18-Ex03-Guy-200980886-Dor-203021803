@@ -282,6 +282,12 @@ namespace Ex03.ConsoleUI
   |                                                               |
   |_______________________________________________________________| ");
         }
+
+        public static string DisplayVehicleIsAlreadyInTheGarage(string i_LicenseNumber)
+        {
+            return string.Format(
+@" Vehicle with license number {0} is already in the garage!", i_LicenseNumber);
+        }
     }
 }
 
