@@ -63,7 +63,7 @@ namespace Ex03.ConsoleUI
             return getVehicleDetails(DisplayNumbersOfDoors(), numOfTypes);
         }
 
-        public static string GetCooled() 
+        public static string GetCooled()
         {
             return getVehicleDetails(DisplayIsCooles(), int.MaxValue); // <---
         }
@@ -95,13 +95,13 @@ namespace Ex03.ConsoleUI
 
         }
 
-        public static string GetVehicleStatus()              
-        {   
+        public static string GetVehicleStatus()
+        {
 
             throw new NotImplementedException();
         }
 
-        public static string GetFuelType()                     
+        public static string GetFuelType()
         {
             throw new NotImplementedException();
         }
@@ -121,7 +121,7 @@ namespace Ex03.ConsoleUI
 
             try
             {
-                while (result <= 0 || result > i_MaxValue)                       
+                while (result <= 0 || result > i_MaxValue)
                 {
                     Console.WriteLine(i_AppMessage);
                     userAnswer = Console.In.ReadLine();

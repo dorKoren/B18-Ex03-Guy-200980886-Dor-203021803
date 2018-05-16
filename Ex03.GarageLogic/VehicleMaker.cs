@@ -33,7 +33,7 @@ namespace Ex03.GarageLogic
                 case (eVehicleType.FuelBasedCar):
                     o_Vehicle = new FuelBasedCar();
                     break;
-               
+
                 case (eVehicleType.FuelBasedTruck):
                     o_Vehicle = new FuelBasedTruck();
                     break;

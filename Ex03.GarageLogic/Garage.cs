@@ -93,10 +93,10 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
         /// according to the type of vehicle he wishes to add.
         /// </summary>
         /// <param name="i_Vehicle"></param>
-        public void Insert(           
+        public void Insert(
             Vehicle i_Vehicle,
-            string  i_LicenseNumber,
-            string  i_OwnerName,
+            string i_LicenseNumber,
+            string i_OwnerName,
             string i_OwnerPhone)
         {
             if (i_LicenseNumber != "" && i_OwnerName != "" && i_OwnerPhone != "")
@@ -105,7 +105,7 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
                 if (VehicleIsAlreadyInTheGarage(i_LicenseNumber))
                 {
                     LicenseNumbersList.TryGetValue(i_LicenseNumber, out VehicleDetails value);
-                    value.VehicleStatus = eVehicleStatus.InRepair;                
+                    value.VehicleStatus = eVehicleStatus.InRepair;
                 }
                 // If we don't have this vehicle in this garage, add it
                 else
@@ -174,7 +174,7 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
 
         public void InflateTiresToMaximum(string i_LicenseNumber)
         {
-            VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle);       
+            VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle);
             if (vehicle != null)
             {
                 vehicle.InflateAllWheels(vehicle.Wheels[0].MaxAirPressure);

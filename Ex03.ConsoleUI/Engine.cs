@@ -11,8 +11,8 @@ namespace Ex03.ConsoleUI
 {
     public class Engine
     {
-        
-        /* Regular Members */    
+
+        /* Regular Members */
         private Garage m_Garage;
 
         /*  Constructor  */
@@ -34,10 +34,10 @@ namespace Ex03.ConsoleUI
             string menuOption = GetMainMenuOption();
             int exit = (int)MainMenu.eMainMenuOptions.Exit;
             // While the user donesn't want to exit from the app
-            while (int.Parse(menuOption) != exit)  
+            while (int.Parse(menuOption) != exit)
             {
-               navigateTo(menuOption);
-               menuOption = GetMainMenuOption();  // bag potential?..
+                navigateTo(menuOption);
+                menuOption = GetMainMenuOption();  // bag potential?..
             }
         }
 
@@ -70,7 +70,7 @@ namespace Ex03.ConsoleUI
                     break;
                 default:
                     // None or Exit
-                    break;            
+                    break;
             }
         }
 
@@ -97,7 +97,8 @@ namespace Ex03.ConsoleUI
 
             if (Garage.VehicleIsAlreadyInTheGarage(licenseNumber))
             {
-                Console.WriteLine(string.Format(DisplayVehicleIsAlreadyInTheGarage(licenseNumber)));
+                // Console.WriteLine(string.Format(DisplayVehicleIsAlreadyInTheGarage(licenseNumber)));     <----- If the license plate was found we need to change its status into "Waiting"
+                // TODO: Implement
             }
             else
             {
@@ -105,9 +106,9 @@ namespace Ex03.ConsoleUI
                 ownerPhone = GetOwnerPhoneNumber();
                 eVehicleType vehicleType = (eVehicleType)Enum.Parse(typeof(eVehicleType), GetVehicleType());
                 Vehicle vehicle;
-                GarageLogic.VehicleMaker.MakeNewVehicle(vehicleType, out vehicle);
+               VehicleMaker.MakeNewVehicle(vehicleType, out vehicle);
 
-                setVehicleDetails(vehicle);  
+                setVehicleDetails(vehicle);
 
                 Garage.Insert(vehicle, licenseNumber, ownerName, ownerPhone);
             }
@@ -116,7 +117,7 @@ namespace Ex03.ConsoleUI
 
         private void setVehicleDetails(Vehicle i_Vehicle)  // maybe by ref ???
         {
-            switch(i_Vehicle.Type)
+            switch (i_Vehicle.Type)
             {
                 case (eVehicleType.ElectricBasedCar):
                     setElectricBasedCar(i_Vehicle);
@@ -145,7 +146,7 @@ namespace Ex03.ConsoleUI
 
         private void setElectricBasedCar(Vehicle i_Vehicle)
         {
-            
+
         }
 
         private void setElectricBasedMotorcycle(Vehicle i_Vehicle)
@@ -195,7 +196,7 @@ namespace Ex03.ConsoleUI
                 userChoice = UI.GetVehicleStatus();
             }
 
-            eVehicleStatus status = (eVehicleStatus)Enum.Parse(typeof(eVehicleStatus),userChoice);  // bug potential
+            eVehicleStatus status = (eVehicleStatus)Enum.Parse(typeof(eVehicleStatus), userChoice);  // bug potential
             Garage.DisplayLicenseNumbersList(status);
         }
 
@@ -268,7 +269,7 @@ namespace Ex03.ConsoleUI
                 while (amountOfFuel == "")
                 {
                     //amount = UI.GetFuelAmount();    // dortal bag
-                    amountOfFuel = amount.ToString(); 
+                    amountOfFuel = amount.ToString();
                 }
             }
 
@@ -311,7 +312,7 @@ namespace Ex03.ConsoleUI
                 if (vehicle is ElectricBasedVehicle)
                 {
                     ElectricBasedVehicle electricVehicle = (ElectricBasedVehicle)vehicle;
-                    if(float.TryParse(amountOfMins, out amount))
+                    if (float.TryParse(amountOfMins, out amount))
                     {
                         electricVehicle.Charge(amount);
                     }
@@ -339,7 +340,7 @@ namespace Ex03.ConsoleUI
 
             foreach (eVehicleStatus current in Enum.GetValues(typeof(eVehicleStatus)))
             {
-                if(Enum.GetName(typeof(eVehicleStatus), current).Equals(i_NewStatus))
+                if (Enum.GetName(typeof(eVehicleStatus), current).Equals(i_NewStatus))
                 {
                     status = current;
                     break;

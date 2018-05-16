@@ -23,6 +23,7 @@ namespace Ex03.GarageLogic
             this.m_NumOfDoors = eNumOfDoors.Unknown;
             MaxBatteryLife = k_MaxBatteryLife;
             Type = eVehicleType.ElectricBasedCar;
+            InitWheels();
         }
 
         public ElectricBasedCar(string i_ModelName, string i_LicenseNumber, eColorType i_Color,

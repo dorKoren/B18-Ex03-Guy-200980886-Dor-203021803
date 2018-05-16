@@ -23,6 +23,7 @@ namespace Ex03.GarageLogic
             this.m_EngineVolume = 0;
             MaxBatteryLife = k_MaxBatteryLife;
             Type = eVehicleType.ElectricBasedMotorcycle;
+            InitWheels();
         }
 
         public ElectricBasedMotorcycle(string i_ModelName, string i_LicenseNumber, eLicenseType i_LicenseType,
