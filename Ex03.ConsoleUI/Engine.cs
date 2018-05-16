@@ -226,7 +226,6 @@ namespace Ex03.ConsoleUI
             }
         }
 
-
         /// <summary>
         /// This method deals with inflating a certain vehicle’s wheels to max PSI.
         /// </summary>

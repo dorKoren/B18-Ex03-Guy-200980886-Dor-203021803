@@ -131,8 +131,6 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             return LicenseNumbersList.ContainsKey(i_LicenseNumber);
         }
 
-
-
         /// <summary>
         /// Display a list of license numbers currently in the garage, with a
         /// filtering option based on the status of each vehicle.
