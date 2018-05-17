@@ -72,7 +72,7 @@ namespace Ex03.GarageLogic
         }
 
 
-        /************************************** End of inner class *******************************************************/
+        /************************************** End of nested class *****************************************/
 
         /* Regular Members */
         protected string m_ModelName;
@@ -136,7 +136,6 @@ namespace Ex03.GarageLogic
             get { return this.m_Type; }
             set { this.m_Type = value; }
         }
-
 
         /* Public Methods */
         public void InitWheels(string i_WheelModel, int i_NumOfWheels, float i_MaxAirPressure)

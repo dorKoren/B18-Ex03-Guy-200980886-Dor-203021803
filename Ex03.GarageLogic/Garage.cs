@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
-using static Ex03.GarageLogic.Vehicle;
-using static Ex03.GarageLogic.FuelBasedVehicle;
-using static Ex03.GarageLogic.VehicleMaker;
 using static Ex03.GarageLogic.Enums;
 
 namespace Ex03.GarageLogic
@@ -54,7 +51,7 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             }
         }
 
-        /**************************** End Of Inner Class ***********************/
+        /**************************** End Of Nested Class ***********************/
 
         /* Regular Members */
         private Dictionary<string, VehicleDetails> m_LicenseNumbersList;  // <license number, vehicle details>  
@@ -77,7 +74,6 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
         {
             get { return m_VehicleList; }
         }
-
 
         /* Public Methods */
 

@@ -1,18 +1,15 @@
 ﻿using Ex03.GarageLogic;
 using System;
 using static Ex03.GarageLogic.Enums;
-using static Ex03.GarageLogic.VehicleMaker;
 using static Ex03.ConsoleUI.Menus;
 using static Ex03.ConsoleUI.UI;
 using static Ex03.ConsoleUI.Menus.MainMenu;
-using System.Linq;
 using static Ex03.GarageLogic.Garage;
 
 namespace Ex03.ConsoleUI
 {
     public class Engine
     {
-
         /* Regular Members */
         private Garage m_Garage;
 
@@ -302,14 +299,11 @@ namespace Ex03.ConsoleUI
                 Garage.LicenseNumbersList.TryGetValue(licenseNumber, out VehicleDetails ownerDetails);
                 ownerDetails.VehicleStatus = status;
             }
-            else
-            {
-                // throw new VehicleIsNotInGarage();
-            }
         }
 
         /// <summary>
-        /// This method deals with inflating a certain vehicle’s wheels to max PSI.
+        /// This method deals with inflating a certain 
+        /// vehicle’s wheels to max PSI.
         /// </summary>
         private void inflateAllWheelsToMax()
         {
@@ -327,10 +321,6 @@ namespace Ex03.ConsoleUI
                     float maxPSI = vehicle.Wheels[0].MaxAirPressure;
                     vehicle.InflateAllWheels(maxPSI);
                 }
-            }
-            else
-            {
-                // throw new VehicleIsNotInGarageException();
             }
         }
 
@@ -361,7 +351,7 @@ namespace Ex03.ConsoleUI
                 if (vehicle is FuelBasedVehicle fuelVehicle)
                 {
                     fuelVehicle = (FuelBasedVehicle)vehicle;
-                     fuel = (eFuelType)Enum.Parse(typeof(eFuelType), fuelType);         // Guy fix 17.05
+                     fuel = (eFuelType)Enum.Parse(typeof(eFuelType), fuelType);        
                     try
                     {
                         fuelVehicle.Refuel(amount, fuel);
@@ -370,8 +360,7 @@ namespace Ex03.ConsoleUI
                     {
                         Console.WriteLine("Wrong type of fuel for " + (Enum.GetName(typeof(eFuelType), fuelVehicle.Type)) + "\n"
                                             + "Did not refuel vehicle " + fuelVehicle.LicenseNumber);
-                    }
-                        
+                    }             
                 }
                 else
                 {
@@ -382,7 +371,6 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("Vehicle number " + vehicle.LicenseNumber + " isn't found in this Garage");
             }
-
         }
 
         /// <summary>

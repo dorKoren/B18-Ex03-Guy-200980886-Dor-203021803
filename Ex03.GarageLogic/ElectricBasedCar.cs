@@ -9,11 +9,10 @@ namespace Ex03.GarageLogic
         private eNumOfDoors m_NumOfDoors;
 
         /* Const Members */
-        private const string k_WheelModel = "Michelin";  // we need to check in the document about the brand name...
+        private const string k_WheelModel = "Michelin";  
         private const int k_NumOfWheels = 4;
         private const float k_MaxAirPressure = 32;
         private const float k_MaxBatteryLife = 3.2F;
-
 
         /* Constructor */
         // Default constructor for the use of VehicleMaker class
@@ -22,15 +21,6 @@ namespace Ex03.GarageLogic
             this.m_Color = eColorType.Unknown;
             this.m_NumOfDoors = eNumOfDoors.Unknown;
             MaxBatteryLife = k_MaxBatteryLife;
-            Type = eVehicleType.ElectricBasedCar;
-            InitWheels();
-        }
-
-        public ElectricBasedCar(string i_ModelName, string i_LicenseNumber, eColorType i_Color,
-            eNumOfDoors i_NumOfDoors) : base(i_LicenseNumber, i_ModelName, k_MaxBatteryLife)
-        {
-            this.m_Color = i_Color;
-            this.m_NumOfDoors = i_NumOfDoors;
             Type = eVehicleType.ElectricBasedCar;
             InitWheels();
         }

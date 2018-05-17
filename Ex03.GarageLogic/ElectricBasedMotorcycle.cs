@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic
         private int m_EngineVolume;
 
         /* Const Members */
-        private const string k_WheelModel = "Michelin";  // we need to check in the document about the brand name...
+        private const string k_WheelModel = "Michelin";  
         private const int k_NumOfWheels = 2;
         private const float k_MaxAirPressure = 30;
         private const float k_MaxBatteryLife = 1.8F;
@@ -26,26 +26,17 @@ namespace Ex03.GarageLogic
             InitWheels();
         }
 
-        public ElectricBasedMotorcycle(string i_ModelName, string i_LicenseNumber, eLicenseType i_LicenseType,
-            int i_EngineVolume) : base(i_LicenseNumber, i_ModelName, k_MaxBatteryLife)
-        {
-            this.m_LicenseType = i_LicenseType;
-            this.m_EngineVolume = i_EngineVolume;
-            Type = eVehicleType.ElectricBasedMotorcycle;
-            InitWheels();
-        }
-
         /* Unimplemented Properties */
         public eLicenseType LicenseType
         {
             get { return this.m_LicenseType; }
-            set { this.m_LicenseType = value; }             // Guy addition 14.05
+            set { this.m_LicenseType = value; }             
         }
 
         public int EngineVolume
         {
             get { return this.m_EngineVolume; }
-            set { this.m_EngineVolume = value; }           // Guy addition 14.05
+            set { this.m_EngineVolume = value; }           
         }
 
         /* Public Methods */

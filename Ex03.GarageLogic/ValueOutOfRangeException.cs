@@ -4,9 +4,6 @@ namespace Ex03.GarageLogic
 {
     public class ValueOutOfRangeException : Exception
     {
-        /* Const Members */
-        //private const string k_ExceptionMessage = "Value Out Of Range Exception";
-
         /* Regular Members */
         private float m_MaxValue;
         private float m_MinValue;

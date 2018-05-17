@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using static Ex03.GarageLogic.Enums;
 
 namespace Ex03.GarageLogic
@@ -11,7 +10,7 @@ namespace Ex03.GarageLogic
         private float m_VolumeOfCargo;
 
         /* Const Members */
-        private const string k_WheelModel = "Michelin";  // we need to check in the document about the brand name...
+        private const string k_WheelModel = "Michelin";  
         private const int k_NumOfWheels = 12;
         private const float k_MaxAirPressure = 28;
         private const float k_MaxAmountOfFuel = 115;
@@ -24,16 +23,6 @@ namespace Ex03.GarageLogic
             this.m_IsCooled = false;
             this.m_VolumeOfCargo = 0;
             MaxAmountOfFuel = k_MaxAmountOfFuel;
-            Type = eVehicleType.FuelBasedTruck;
-            FuelType = k_FuelType;
-            InitWheels();
-        }
-
-        public FuelBasedTruck(string i_ModelName, string i_LicenseNumber, bool i_IsCooled,
-             float i_VolumeOfCargo) : base(i_LicenseNumber, i_ModelName, k_FuelType, k_MaxAmountOfFuel)
-        {
-            this.m_IsCooled = i_IsCooled;
-            this.m_VolumeOfCargo = i_VolumeOfCargo;
             Type = eVehicleType.FuelBasedTruck;
             FuelType = k_FuelType;
             InitWheels();

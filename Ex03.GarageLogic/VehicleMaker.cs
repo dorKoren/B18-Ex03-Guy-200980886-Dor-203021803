@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using static Ex03.GarageLogic.ElectricBasedVehicle;
-using static Ex03.GarageLogic.FuelBasedVehicle;
-using static Ex03.GarageLogic.Vehicle;
-using static Ex03.GarageLogic.Enums;
+﻿using static Ex03.GarageLogic.Enums;
 
 namespace Ex03.GarageLogic
 {
@@ -13,7 +8,6 @@ namespace Ex03.GarageLogic
         /* Public Methods */
         public static void MakeNewVehicle(eVehicleType i_VehicleType, out Vehicle o_Vehicle)
         {
-            //Vehicle newVehicle = null;   // Bag Potential ! we need to think about corect exception!
             o_Vehicle = null;
 
             switch (i_VehicleType)
@@ -42,6 +36,5 @@ namespace Ex03.GarageLogic
                     break;
             }
         }
-
     }
 }

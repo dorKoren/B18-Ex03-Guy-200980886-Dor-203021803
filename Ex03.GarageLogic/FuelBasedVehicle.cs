@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using static Ex03.GarageLogic.Vehicle;
-using static Ex03.GarageLogic.IFillable;
-using static Ex03.GarageLogic.Enums;
+﻿using static Ex03.GarageLogic.Enums;
 using System;
 
 namespace Ex03.GarageLogic
@@ -73,7 +70,6 @@ namespace Ex03.GarageLogic
         /// </summary>
         public bool Refuel(float i_Amount, eFuelType i_FuelType)                        
         {
-            // We should add exception.
             bool refuled = true;
             if (!i_FuelType.Equals(FuelType))
             {

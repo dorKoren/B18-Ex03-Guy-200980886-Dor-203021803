@@ -5,18 +5,16 @@ using static Ex03.GarageLogic.Enums;
 using static Ex03.ConsoleUI.Menus;
 using static Ex03.ConsoleUI.Menus.MainMenu;
 
-
 namespace Ex03.ConsoleUI
 {
     public class UI
     {
-
         /* Public Methods */
 
         public static string GetMainMenuOption()
         {
             int numOfOptions = Enum.GetNames(typeof(eMainMenuOptions)).Length;               
-            return getVehicleDetails(DisplayMenu(), numOfOptions);           // May be need to change the name or wrap it in another method
+            return getVehicleDetails(DisplayMenu(), numOfOptions);           
         }
 
         public static string GetVehicleType()

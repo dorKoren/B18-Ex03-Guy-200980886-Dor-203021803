@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Ex03.ConsoleUI
 {
     public static class Menus
@@ -26,7 +23,7 @@ namespace Ex03.ConsoleUI
 
         /********** End of nested class ************/
 
-
+        /* Public Methids */
 
         public static string foo(string ins, string zibi)
         {
