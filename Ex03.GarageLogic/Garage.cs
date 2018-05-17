@@ -123,8 +123,6 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             return LicenseNumbersList.ContainsKey(i_LicenseNumber);
         }
 
-
-
         /// <summary>
         /// Display a list of license numbers currently in the garage, with a
         /// filtering option based on the status of each vehicle.
@@ -143,7 +141,7 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
             // Print the filtered list.
             else
             {
-                Dictionary<string, VehicleDetails> filteredDictionary = LicenseNumbersList;
+                Dictionary<string, VehicleDetails> filteredDictionary = new Dictionary<string, VehicleDetails>(LicenseNumbersList);
                 List<string> licenses = getDifferentLicensesStatus(i_FilteringStatus);
                 removeLicenses(filteredDictionary, licenses);
                 licenseNumbersList = printLicenseNumbersList(filteredDictionary);  // i didn't figure out how to use to string method...

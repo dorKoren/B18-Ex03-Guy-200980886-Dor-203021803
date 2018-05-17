@@ -271,7 +271,7 @@ namespace Ex03.ConsoleUI
             }
 
             eVehicleStatus status = (eVehicleStatus)Enum.Parse(typeof(eVehicleStatus), userChoice);  // bug potential
-            Garage.DisplayLicenseNumbersList(status);
+            Console.WriteLine(Garage.DisplayLicenseNumbersList(status));
         }
 
         /// <summary>
@@ -291,13 +291,14 @@ namespace Ex03.ConsoleUI
             if (Garage.VehicleList.TryGetValue(licenseNumber, out Vehicle vehicle))
             {
                 eVehicleStatus status = (eVehicleStatus)Enum.Parse(typeof(eVehicleStatus), newStatus);
+                Garage.LicenseNumbersList.TryGetValue(licenseNumber, out VehicleDetails ownerDetails);
+                ownerDetails.VehicleStatus = status;
             }
             else
             {
                 // throw new VehicleIsNotInGarage();
             }
         }
-
 
         /// <summary>
         /// This method deals with inflating a certain vehicle’s wheels to max PSI.
@@ -342,8 +343,8 @@ namespace Ex03.ConsoleUI
                 while (fuelType == "") { fuelType = GetFuelType(); }
                 while (amountOfFuel == "")
                 {
-                    //amount = UI.GetFuelAmount();    // dortal bag
-                    amountOfFuel = amount.ToString();
+                    amountOfFuel = UI.GetFuelAmount();    // dortal bag
+                    amount = float.Parse(amountOfFuel);
                 }
             }
 
@@ -352,7 +353,7 @@ namespace Ex03.ConsoleUI
                 if (vehicle is FuelBasedVehicle fuelVehicle)
                 {
                     fuelVehicle = (FuelBasedVehicle)vehicle;
-                    fuel = parseFuelType(fuelType);
+                     fuel = (eFuelType)Enum.Parse(typeof(eFuelType), fuelType);         // Guy fix 17.05
                     fuelVehicle.Refuel(amount, fuel);
                 }
             }
@@ -383,7 +384,7 @@ namespace Ex03.ConsoleUI
 
             if (Garage.VehicleList.TryGetValue(licenseNumber, out Vehicle vehicle))
             {
-                if (vehicle is ElectricBasedVehicle electricVehicle)
+                 if (vehicle is ElectricBasedVehicle electricVehicle)
                 {
                     electricVehicle = (ElectricBasedVehicle)vehicle;
                     if (float.TryParse(amountOfMins, out amount))
@@ -408,7 +409,7 @@ namespace Ex03.ConsoleUI
         /// </summary>
         /// <param name="i_NewStatus"></param>
         /// <returns></returns>
-        private eVehicleStatus parseVehicleStatus(string i_NewStatus)             // Guy addition 15.05
+        private eVehicleStatus parseVehicleStatus(string i_NewStatus)          
         {
             eVehicleStatus status = eVehicleStatus.None;
 
@@ -423,21 +424,6 @@ namespace Ex03.ConsoleUI
 
             return status;
         }
-
-        private eFuelType parseFuelType(string i_FuelType)
-        {
-            eFuelType fuel = eFuelType.Unknown;
-
-            foreach (eFuelType current in Enum.GetValues(typeof(eFuelType)))
-            {
-                if (Enum.GetName(typeof(eFuelType), current).Equals(fuel))
-                {
-                    fuel = current;
-                    break;
-                }
-            }
-
-            return fuel;
-        }
+        
     }
 }

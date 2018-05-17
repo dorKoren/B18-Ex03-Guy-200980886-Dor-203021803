@@ -15,58 +15,58 @@ namespace Ex03.ConsoleUI
 
         public static string GetMainMenuOption()
         {
-            int numOfOptions = Enum.GetNames(typeof(eMainMenuOptions)).Length;                 // find out the number of options (Enum values).
-            return getVehicleDetails(DisplayMenu(), numOfOptions);           // Maybe need to change the name or wrap it in another method
+            int numOfOptions = Enum.GetNames(typeof(eMainMenuOptions)).Length;               
+            return getVehicleDetails(DisplayMenu(), numOfOptions);           // May be need to change the name or wrap it in another method
         }
 
         public static string GetVehicleType()
         {
-            int numOfTypes = Enum.GetNames(typeof(eVehicleType)).Length - 1; //  len - 1           
+            int numOfTypes = Enum.GetNames(typeof(eVehicleType)).Length - 1;        
             return getVehicleDetails(DisplayVehicleTypes(), numOfTypes);
         }
 
         public static string GetColorType()
         {
-            int numOfTypes = Enum.GetNames(typeof(eColorType)).Length - 1; //  len - 1
+            int numOfTypes = Enum.GetNames(typeof(eColorType)).Length - 1; 
             return getVehicleDetails(DisplayColorTypes(), numOfTypes);
         }
 
         public static string GetWheelsAirPressure()
         {
-            return getVehicleDetails(DisplayWheelsAirPressure(), int.MaxValue); // <--- ?
+            return getVehicleDetails(DisplayWheelsAirPressure(), int.MaxValue); 
         }
 
         public static string GetFuelAmount()
         {
-            return getVehicleDetails(DisplayWheelsAirPressure(), int.MaxValue); // <--- ?
+            return getVehicleDetails(DisplayFuelAmount(), int.MaxValue); 
         }
 
         public static string GetRemainingBatteryLife()
         {
-            return getVehicleDetails(DisplayBstteryLife(), int.MaxValue); // <--- ?
+            return getVehicleDetails(DisplayBstteryLife(), int.MaxValue); 
         }
 
         public static string GetLicenseType()
         {
-            int numOfTypes = Enum.GetNames(typeof(eLicenseType)).Length - 1; //  len - 1
+            int numOfTypes = Enum.GetNames(typeof(eLicenseType)).Length - 1; 
             return getVehicleDetails(DisplayLicenseType(), numOfTypes);
         }
 
         public static string GetEngineVolume()
         {
-            return getVehicleDetails(DisplayEngineVolume(), int.MaxValue); // <--- ?
+            return getVehicleDetails(DisplayEngineVolume(), int.MaxValue); 
         }
 
         public static string GetNumbersOfDoors()
         {
-            int numOfTypes = Enum.GetNames(typeof(eNumOfDoors)).Length - 1; //  len - 1
+            int numOfTypes = Enum.GetNames(typeof(eNumOfDoors)).Length - 1; 
             return getVehicleDetails(DisplayNumbersOfDoors(), numOfTypes);
         }
 
-        public static string GetFuelType()
+         public static string GetFuelType()
         {
-            int numOfTypes = Enum.GetNames(typeof(eFuelType)).Length - 1; //  len - 1
-            return getVehicleDetails(DisplaycFuelTypes(), numOfTypes);
+            int numOfTypes = Enum.GetNames(typeof(eFuelType)).Length - 1; 
+            return getVehicleDetails(DisplaycFuelTypes(), numOfTypes);   // <-- fix name !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         } 
 
 
@@ -101,7 +101,7 @@ namespace Ex03.ConsoleUI
             getOwnerDetail(out licenseNumber, DisplayOwnerLicenseNumber());
             return licenseNumber;
 
-        }
+                          }
 
         public static string GetModelName()
         {
@@ -117,7 +117,7 @@ namespace Ex03.ConsoleUI
             return remainingEnergyPercentage;
         }
 
-        public static string GetCurrentBatteryLife()
+         public static string GetCurrentBatteryLife()
         {
             string currentBatteryLife;
             getOwnerDetail(out currentBatteryLife, DisplayCurrentBatteryLife());
@@ -134,8 +134,8 @@ namespace Ex03.ConsoleUI
 
         public static string GetVehicleStatus()
         {
-
-            throw new NotImplementedException();
+            getVehicleStatus(out vehicleStatus, DisplayVehicleStatus());
+            return vehicleStatus;
         }
 
         public static string GetAmountOfMinsToCharge()         
@@ -193,6 +193,25 @@ namespace Ex03.ConsoleUI
             }
 
             return o_Detail;
+        }
+
+        private static void getVehicleStatus(out string i_VehicleStatus, string i_AppMessage)
+        {
+            i_VehicleStatus = "";
+
+            try
+            {
+                while (i_VehicleStatus.Equals(""))
+                {
+                    Console.WriteLine(i_AppMessage);
+                    i_VehicleStatus = Console.In.ReadLine();
+                }
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Catching FormatException");
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

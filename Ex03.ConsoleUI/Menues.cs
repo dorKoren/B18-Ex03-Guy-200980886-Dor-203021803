@@ -387,12 +387,12 @@ namespace Ex03.ConsoleUI
             return string.Format(
 @"
    _______________________________________________________________
-  | Please enter fuel type of:                                    |
+  | Please enter fuel type:                                       |
   |---------------------------------------------------------------|                                                    
   |  1. Soler                                                     |
-  |  2. Octane95                                                  |
-  |  3. Octan96                                                   |
-  |  4. Octan98                                                   |
+  |  2. Octan 95                                                  |
+  |  3. Octan 96                                                  |
+  |  4. Octan 98                                                  |
   |                                                               |
   |                                                               |
   |                                                               |
