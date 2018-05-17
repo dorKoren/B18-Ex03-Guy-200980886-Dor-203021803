@@ -82,15 +82,7 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
         /* Public Methods */
 
         /// <summary>
-        /// “Insert” a new vehicle into the garage. The user will be asked to 
-        /// select a vehicle type out of the supported vehicle types, and to 
-        /// input the license number of the vehicle. If the vehicle is already 
-        /// in the garage (based on license number) the system will display an
-        /// appropriate message and will use the vehicle in the garage 
-        /// (and will change the vehicle status to “In Repair”), if not, a new
-        /// object of that vehicle type will be created and the user will be 
-        /// prompted to input the values for the properties of his vehicle, 
-        /// according to the type of vehicle he wishes to add.
+        /// “Insert” a new vehicle into the garage.
         /// </summary>
         /// <param name="i_Vehicle"></param>
         public void Insert(
@@ -104,8 +96,8 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
                 // If we have this vehicle in this garage, change its status
                 if (VehicleIsAlreadyInTheGarage(i_LicenseNumber))
                 {
-                    LicenseNumbersList.TryGetValue(i_LicenseNumber, out VehicleDetails value);
-                    value.VehicleStatus = eVehicleStatus.InRepair;
+
+                    throw new ArgumentException("Vehicle's license plate is already in the Garage");
                 }
                 // If we don't have this vehicle in this garage, add it
                 else

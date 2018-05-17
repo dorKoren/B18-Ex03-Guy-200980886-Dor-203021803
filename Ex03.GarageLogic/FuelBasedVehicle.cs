@@ -36,6 +36,7 @@ namespace Ex03.GarageLogic
         public eFuelType FuelType
         {
             get { return m_FuelType; }
+            set { m_FuelType = value; }
         }
 
         public float CurrentAmountOfFuel

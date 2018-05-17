@@ -63,6 +63,14 @@ namespace Ex03.ConsoleUI
             return getVehicleDetails(DisplayNumbersOfDoors(), numOfTypes);
         }
 
+        public static string GetFuelType()
+        {
+            int numOfTypes = Enum.GetNames(typeof(eFuelType)).Length - 1; //  len - 1
+            return getVehicleDetails(DisplaycFuelTypes(), numOfTypes);
+        } 
+
+
+
         public static string GetCooled()
         {
             return getVehicleDetails(DisplayIsCooles(), int.MaxValue); // <---
@@ -95,21 +103,47 @@ namespace Ex03.ConsoleUI
 
         }
 
+        public static string GetModelName()
+        {
+            string modelName;
+            getOwnerDetail(out modelName, DisplayModelName());
+            return modelName;
+        }
+
+        public static string GetRemainingEnergyPercentage()
+        {
+            string remainingEnergyPercentage;
+            getOwnerDetail(out remainingEnergyPercentage, DisplayRemainingEnergyPercentage());
+            return remainingEnergyPercentage;
+        }
+
+        public static string GetCurrentBatteryLife()
+        {
+            string currentBatteryLife;
+            getOwnerDetail(out currentBatteryLife, DisplayCurrentBatteryLife());
+            return currentBatteryLife;
+        }
+
+        public static string GetCurrentAmountOfFuel()
+        {
+            string currentAmountOfFuel;
+            getOwnerDetail(out currentAmountOfFuel, DisplaycurrentAmountOfFuel());
+            return currentAmountOfFuel;
+        }
+
+
         public static string GetVehicleStatus()
         {
 
             throw new NotImplementedException();
         }
 
-        public static string GetFuelType()
+        public static string GetAmountOfMinsToCharge()         
         {
             throw new NotImplementedException();
         }
 
-        public static string GetAmountOfMinsToCharge()          // Guy addition 15.05
-        {
-            throw new NotImplementedException();
-        }
+        
 
 
         /* Private Methods */

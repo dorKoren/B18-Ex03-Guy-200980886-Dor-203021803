@@ -25,6 +25,28 @@ namespace Ex03.ConsoleUI
         }
 
         /********** End of nested class ************/
+
+
+
+        public static string foo(string ins, string zibi)
+        {
+            return string.Format(
+            @"
+   _______________________________________________________________
+  | {0}                                                           |
+  |---------------------------------------------------------------|
+  | {1}                                                           |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |_______________________________________________________________| ", ins, zibi);
+        }
+
+
         public static string DisplayMenu()
         {
             return string.Format(
@@ -69,7 +91,7 @@ namespace Ex03.ConsoleUI
 @"
    _______________________________________________________________
   | Please select a desired color of Vehicle out of the following:|
-  |---------------------------------------------------------------|                                                            
+  |-------------------------------------------------------------- |
   | 1.   Gray                                                     |
   | 2.   Blue                                                     |
   | 3.   White                                                    |
@@ -283,10 +305,106 @@ namespace Ex03.ConsoleUI
   |_______________________________________________________________| ");
         }
 
+
+
+        public static string DisplayModelName()
+        {
+            return string.Format(
+@"
+   _______________________________________________________________
+  | Please enter model name :                                     |
+  |---------------------------------------------------------------|                                                    
+  |  vehicle model name: ___                                      |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |_______________________________________________________________| ");
+        }
+
+
+        public static string DisplayCurrentBatteryLife()
+        {
+            return string.Format(
+@"
+   _______________________________________________________________
+  | Please enter current Battery life:                            |
+  |---------------------------------------------------------------|                                                    
+  |  current Battery life: ___                                    |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |_______________________________________________________________| ");
+        }
+    
+
+        public static string DisplayRemainingEnergyPercentage()
+        {
+            return string.Format(
+@"
+   _______________________________________________________________
+  | Please enter remaining energy percentage:                     |
+  |---------------------------------------------------------------|                                                    
+  |  remaining energy percentage: ___                             |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |_______________________________________________________________| ");
+        }
+
+        public static string DisplaycurrentAmountOfFuel()
+        {
+            return string.Format(
+@"
+   _______________________________________________________________
+  | Please enter remaining amount of fuel:                        |
+  |---------------------------------------------------------------|                                                    
+  |  remaining amount of fuel: ___                                |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |_______________________________________________________________| ");
+
+        }
+
+        public static string DisplaycFuelTypes()
+        {
+            return string.Format(
+@"
+   _______________________________________________________________
+  | Please enter fuel type of:                                    |
+  |---------------------------------------------------------------|                                                    
+  |  1. Soler                                                     |
+  |  2. Octane95                                                  |
+  |  3. Octan96                                                   |
+  |  4. Octan98                                                   |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |_______________________________________________________________| ");
+
+        }  
+
         public static string DisplayVehicleIsAlreadyInTheGarage(string i_LicenseNumber)
         {
             return string.Format(
-@" Vehicle with license number {0} is already in the garage!", i_LicenseNumber);
+@" Vehicle with license number {0} is in 'Waiting' status!", i_LicenseNumber);
         }
     }
 }

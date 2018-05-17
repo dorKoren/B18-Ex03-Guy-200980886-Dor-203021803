@@ -2,17 +2,19 @@
 
 namespace Ex03.GarageLogic
 {
-    interface IMotorcycle
+    public interface IMotorcycle
     {
         /* Properties */
         eLicenseType LicenseType
         {
             get;
+            set;
         }
 
         int EngineVolume
         {
             get;
+            set;
         }
     }
 }

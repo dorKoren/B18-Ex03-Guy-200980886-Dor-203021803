@@ -24,11 +24,13 @@ namespace Ex03.GarageLogic
             this.m_NumOfDoors = eNumOfDoors.Unknown;
             MaxAmountOfFuel = k_MaxAmountOfFuel;
             Type = eVehicleType.FuelBasedCar;
+            FuelType = eFuelType.Octan98;  
+            
             InitWheels();
         }
 
         public FuelBasedCar(string i_ModelName, string i_LicenseNumber, eColorType i_Color,
-            eNumOfDoors i_NumOfDoors) : base(i_LicenseNumber, i_ModelName, k_FuelType, k_MaxAmountOfFuel)
+            eNumOfDoors i_NumOfDoors) : base(i_ModelName, i_LicenseNumber, k_FuelType, k_MaxAmountOfFuel)
         {
             this.m_Color = i_Color;
             this.m_NumOfDoors = i_NumOfDoors;

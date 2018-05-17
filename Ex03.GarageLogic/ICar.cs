@@ -2,17 +2,19 @@
 
 namespace Ex03.GarageLogic
 {
-    interface ICar
+    public interface ICar
     {
         /* Properties */
         eColorType Color
         {
             get;
+            set;
         }
 
         eNumOfDoors NumOfDoors
         {
             get;
+            set;
         }
     }
 }

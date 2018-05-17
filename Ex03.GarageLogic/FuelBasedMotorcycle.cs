@@ -13,7 +13,7 @@ namespace Ex03.GarageLogic
         private int m_EngineVolume;
 
         /* Const Members */
-        private const string k_WheelModel = "Michelin";  // we need to check in the document about the brand name...
+        private const string k_WheelModel = "Michelin";  
         private const int k_NumOfWheels = 2;
         private const float k_MaxAirPressure = 30;
         private const float k_MaxAmountOfFuel = 6;
@@ -28,6 +28,8 @@ namespace Ex03.GarageLogic
             this.m_EngineVolume = 0;
             MaxAmountOfFuel = k_MaxAmountOfFuel;
             Type = eVehicleType.FuelBasedMotorcycle;
+            FuelType = eFuelType.Octan96;
+            InitWheels();
         }
 
         public FuelBasedMotorcycle(string i_ModelName, string i_LicenseNumber, eLicenseType i_LicenseType,

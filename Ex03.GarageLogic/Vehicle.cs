@@ -72,9 +72,6 @@ namespace Ex03.GarageLogic
         }
 
 
-
-
-
         /************************************** End of inner class *******************************************************/
 
         /* Regular Members */
@@ -100,7 +97,7 @@ namespace Ex03.GarageLogic
         }
 
         public Vehicle(string i_Model, string i_LicenseNumber)
-        {   // we should add exception
+        {  
             this.m_ModelName = i_Model;
             this.m_LicenseNumber = i_LicenseNumber;
             this.m_RemainingEnergyPercentage = r_FullEnergy;  // We assume that full energy is represented by 100F (as 100%)
