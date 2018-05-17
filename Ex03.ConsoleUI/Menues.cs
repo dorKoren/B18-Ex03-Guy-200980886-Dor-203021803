@@ -139,7 +139,24 @@ namespace Ex03.ConsoleUI
   |                                                               |
   |                                                               |
   |_______________________________________________________________| ");
+        }
 
+        public static string DisplayAmountOfMinsToCharge()
+        {
+            return string.Format(
+@"
+   _______________________________________________________________
+  | Please enter amount of minutes to recharge:                   |
+  |---------------------------------------------------------------|                                                    
+  |  Charging time (minutes) : ___                                |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |_______________________________________________________________| ");
         }
 
         public static string DisplayBstteryLife()

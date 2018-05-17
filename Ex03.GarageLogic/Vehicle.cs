@@ -109,14 +109,14 @@ namespace Ex03.GarageLogic
         public string ModelName
         {
             get { return this.m_ModelName; }
-            set { this.m_ModelName = value; }               // Addition Guy 14.05
+            set { this.m_ModelName = value; }               
 
         }
 
         public string LicenseNumber
         {
             get { return m_LicenseNumber; }
-            set { this.m_LicenseNumber = value; }           // Addition Guy 14.05
+            set { this.m_LicenseNumber = value; }           
         }
 
         public float RemainingEnergyPercentage
@@ -149,6 +149,17 @@ namespace Ex03.GarageLogic
             }
 
             Wheels = wheels;
+        }
+
+        public void SetWheelsAirPressure(float i_AirPressure)
+        {
+            if (hasAnyWheels())
+            {
+                foreach (Wheel currentWheel in Wheels)
+                {
+                    currentWheel.CurrentAirPressure = i_AirPressure;
+                }
+            }
         }
 
         /// <summary>

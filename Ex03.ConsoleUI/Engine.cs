@@ -159,6 +159,8 @@ namespace Ex03.ConsoleUI
 
                 hasCharged = i_ElectricVehicle.Charge(amountInMins);
             }
+
+            setWheelsAirPressure(i_ElectricVehicle);            // init wheels to desired PSI
         }
 
         private void setFuelBasedVehicle(FuelBasedVehicle i_FuelVehicle)
@@ -175,6 +177,8 @@ namespace Ex03.ConsoleUI
 
                 hasBeenRefueled = i_FuelVehicle.Refuel(amount, i_FuelVehicle.FuelType);
             }
+
+            setWheelsAirPressure(i_FuelVehicle);
         }
 
         private void setCar(ICar i_Car)
@@ -207,6 +211,23 @@ namespace Ex03.ConsoleUI
             }
 
             i_Motorcycle.EngineVolume = engineVolume;
+        }
+
+        private void setWheelsAirPressure(Vehicle i_Vehicle)
+        {
+            float newPSI = 0;
+
+            if (i_Vehicle.hasAnyWheels())
+            {
+                float maxPSI = i_Vehicle.Wheels[0].MaxAirPressure;
+
+                while (newPSI <= 0 || newPSI > maxPSI)
+                {
+                    newPSI = float.Parse(GetWheelsAirPressure());
+                }
+
+                i_Vehicle.SetWheelsAirPressure(newPSI);
+            }
         }
 
         private void setElectricCar(Vehicle i_Vehicle)
@@ -341,12 +362,25 @@ namespace Ex03.ConsoleUI
                 {
                     fuelVehicle = (FuelBasedVehicle)vehicle;
                      fuel = (eFuelType)Enum.Parse(typeof(eFuelType), fuelType);         // Guy fix 17.05
-                    fuelVehicle.Refuel(amount, fuel);
+                    try
+                    {
+                        fuelVehicle.Refuel(amount, fuel);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Wrong type of fuel for " + (Enum.GetName(typeof(eFuelType), fuelVehicle.Type)) + "\n"
+                                            + "Did not refuel vehicle " + fuelVehicle.LicenseNumber);
+                    }
+                        
+                }
+                else
+                {
+                    Console.WriteLine("Can not recharge a " + vehicle.Type);
                 }
             }
             else
             {
-                // throw new VehicleIsNotInGarage();
+                Console.WriteLine("Vehicle number " + vehicle.LicenseNumber + " isn't found in this Garage");
             }
 
         }
@@ -362,7 +396,7 @@ namespace Ex03.ConsoleUI
 
             if (licenseNumber == "" || amountOfMins == "")
             {
-                while (licenseNumber == "") { licenseNumber = UI.GetLicenseNumber(); }
+                while (licenseNumber == "") { licenseNumber = GetLicenseNumber(); }
                 while (amountOfMins == "")
                 {
                     amountOfMins = UI.GetAmountOfMinsToCharge();
@@ -376,13 +410,25 @@ namespace Ex03.ConsoleUI
                     electricVehicle = (ElectricBasedVehicle)vehicle;
                     if (float.TryParse(amountOfMins, out amount))
                     {
-                        electricVehicle.Charge(amount);
+                        try
+                        {
+                            electricVehicle.Charge(amount);
+                        }
+                        catch
+                        {
+                             Console.WriteLine("Amount of charging minutes exceeds battery capacity \n"
+                                            + "Did not refuel vehicle " + electricVehicle.LicenseNumber);
+                        }
                     }
+                }
+                else
+                {
+                    Console.WriteLine("Can not recharge a " + vehicle.Type);
                 }
             }
             else
             {
-                // throw new VehicleIsNotInGarage();
+                Console.WriteLine("Vehicle number " + vehicle.LicenseNumber + " isn't found in this Garage");
             }
         }
 

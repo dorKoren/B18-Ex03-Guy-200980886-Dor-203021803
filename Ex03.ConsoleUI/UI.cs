@@ -111,17 +111,17 @@ namespace Ex03.ConsoleUI
 
          public static string GetCurrentBatteryLife()
         {
-            return getVehicleDetails(DisplayCurrentBatteryLife(), int.MaxValue); ;
+            return getVehicleDetails(DisplayCurrentBatteryLife(), int.MaxValue); 
         }
 
         public static string GetCurrentAmountOfFuel()
         {
-            return getVehicleDetails(DisplaycurrentAmountOfFuel(), int.MaxValue); ;
+            return getVehicleDetails(DisplaycurrentAmountOfFuel(), int.MaxValue); 
 
         }
         public static string GetAmountOfMinsToCharge()         
         {
-            throw new NotImplementedException();
+            return getVehicleDetails(DisplayAmountOfMinsToCharge(), int.MaxValue);
         }
 
         /* Private Methods */

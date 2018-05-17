@@ -78,7 +78,7 @@ namespace Ex03.GarageLogic
             if (!i_FuelType.Equals(FuelType))
             {
                 refuled = !refuled;
-                throw new ArgumentException(this.GetType().Name + " Wrong fuel type");
+                throw new ArgumentException(this.GetType().Name + "Wrong fuel type");
             }
             else
             {
@@ -86,7 +86,7 @@ namespace Ex03.GarageLogic
                 {
                     Fill(i_Amount);
                 }
-                catch
+                catch (ValueOutOfRangeException)
                 {
                     refuled = !refuled;
                 }

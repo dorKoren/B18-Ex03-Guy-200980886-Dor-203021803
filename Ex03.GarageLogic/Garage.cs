@@ -170,35 +170,7 @@ Vehicle status: {2}", OwnerName, OwnerPhone, VehicleStatus);
                 vehicle.InflateAllWheels(vehicle.Wheels[0].MaxAirPressure);
             }
         }
-
-        public void RefuelFuelBasedVehicle(
-            string i_LicenseNumber,
-            eFuelType i_FuelType,
-            float i_RefuelAmount)
-        {
-
-            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))
-            {
-                if (vehicle is FuelBasedVehicle fuelVehicle)
-                {
-                    fuelVehicle.Refuel(i_RefuelAmount, i_FuelType); // checks for wrong type of fuel
-                }
-            }
-        }
-
-        public void ChargeElectricBasedVehicle(
-            string i_LicenseNumber,
-            float i_ChargingAmountInMins)
-        {
-            if (VehicleList.TryGetValue(i_LicenseNumber, out Vehicle vehicle))
-            {
-                if (vehicle is ElectricBasedVehicle electricVehicle)
-                {
-                    electricVehicle.Charge(i_ChargingAmountInMins);  // checks for wrong type of fuel
-                }
-            }
-        }
-
+        
         public string DisplayVehicleInformation(string i_LicenseNumber)
         {
             string vehicleInformation = "";
