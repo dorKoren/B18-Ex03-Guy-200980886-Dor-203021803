@@ -2,9 +2,9 @@
 using System;
 using static Ex03.GarageLogic.Enums;
 using static Ex03.GarageLogic.VehicleMaker;
-using static Ex03.ConsoleUI.Menues;
+using static Ex03.ConsoleUI.Menus;
 using static Ex03.ConsoleUI.UI;
-using static Ex03.ConsoleUI.Menues.MainMenu;
+using static Ex03.ConsoleUI.Menus.MainMenu;
 using System.Linq;
 using static Ex03.GarageLogic.Garage;
 

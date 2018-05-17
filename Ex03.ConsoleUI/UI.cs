@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using static Ex03.GarageLogic.Garage;
 using static Ex03.GarageLogic.Enums;
-using static Ex03.ConsoleUI.Menues;
-using static Ex03.ConsoleUI.Menues.MainMenu;
+using static Ex03.ConsoleUI.Menus;
+using static Ex03.ConsoleUI.Menus.MainMenu;
 
 
 namespace Ex03.ConsoleUI

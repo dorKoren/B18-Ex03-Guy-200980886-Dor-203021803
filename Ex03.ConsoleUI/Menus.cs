@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ex03.ConsoleUI
 {
-    public static class Menues
+    public static class Menus
     {
         /* Nested Class */
         public class MainMenu
