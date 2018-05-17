@@ -71,18 +71,28 @@ namespace Ex03.GarageLogic
         /// amount of fuel, if the fuel type is correct, and the fuel tank
         /// is less than full.
         /// </summary>
-        public void Refuel(float i_Amount, eFuelType i_FuelType)                        
+        public bool Refuel(float i_Amount, eFuelType i_FuelType)                        
         {
             // We should add exception.
+            bool refuled = true;
             if (!i_FuelType.Equals(FuelType))
             {
+                refuled = !refuled;
                 throw new ArgumentException(this.GetType().Name + " Wrong fuel type");
             }
             else
             {
-                Fill(i_Amount);
+                try
+                {
+                    Fill(i_Amount);
+                }
+                catch
+                {
+                    refuled = !refuled;
+                }
             }
 
+            return refuled;
         }
 
         public override string ToString()

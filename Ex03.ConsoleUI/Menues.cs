@@ -331,7 +331,7 @@ namespace Ex03.ConsoleUI
             return string.Format(
 @"
    _______________________________________________________________
-  | Please enter current Battery life:                            |
+  | Please enter current Battery life (in minutes) :              |
   |---------------------------------------------------------------|                                                    
   |  current Battery life: ___                                    |
   |                                                               |
@@ -344,25 +344,6 @@ namespace Ex03.ConsoleUI
   |_______________________________________________________________| ");
         }
     
-
-        public static string DisplayRemainingEnergyPercentage()
-        {
-            return string.Format(
-@"
-   _______________________________________________________________
-  | Please enter remaining energy percentage:                     |
-  |---------------------------------------------------------------|                                                    
-  |  remaining energy percentage: ___                             |
-  |                                                               |
-  |                                                               |
-  |                                                               |
-  |                                                               |
-  |                                                               |
-  |                                                               |
-  |                                                               |
-  |_______________________________________________________________| ");
-        }
-
         public static string DisplaycurrentAmountOfFuel()
         {
             return string.Format(
@@ -382,7 +363,7 @@ namespace Ex03.ConsoleUI
 
         }
 
-        public static string DisplaycFuelTypes()
+        public static string DisplayFuelTypes()
         {
             return string.Format(
 @"
@@ -400,6 +381,24 @@ namespace Ex03.ConsoleUI
   |_______________________________________________________________| ");
 
         }  
+
+        public static string DisplayVehicleStatus()
+        {
+            return string.Format(
+@"
+   _______________________________________________________________
+  | Please select vehicle status:                                 |
+  |---------------------------------------------------------------|                                                    
+  |  1. Waiting                                                   |
+  |  2. In repair                                                 |
+  |  3. Repaired                                                  |
+  |  4. Payed for                                                 |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |_______________________________________________________________| ");
+        }
 
         public static string DisplayVehicleIsAlreadyInTheGarage(string i_LicenseNumber)
         {

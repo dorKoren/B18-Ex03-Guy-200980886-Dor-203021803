@@ -113,13 +113,6 @@ namespace Ex03.ConsoleUI
         {
             i_Vehicle.LicenseNumber = i_LicenseNumber;
             i_Vehicle.ModelName = GetModelName();
-            i_Vehicle.RemainingEnergyPercentage = float.Parse(GetRemainingEnergyPercentage());
-
-            if (i_Vehicle.RemainingEnergyPercentage < 0 || i_Vehicle.RemainingEnergyPercentage > 100)
-            {
-                throw new ValueOutOfRangeException("Invalid percentace value!", 100, 0);
-            }
-
             setVehicleDetails(i_Vehicle);                
         }
 
@@ -154,35 +147,36 @@ namespace Ex03.ConsoleUI
 
         private void setElectricBasedVehicle(ElectricBasedVehicle i_ElectricVehicle)
         {
-            i_ElectricVehicle.CurrentBatteryLife = float.Parse(GetCurrentBatteryLife());
+            float amountInMins = -1;
+            bool hasCharged = false;
 
-            if (i_ElectricVehicle.CurrentBatteryLife < 0 || 
-                i_ElectricVehicle.CurrentBatteryLife > i_ElectricVehicle.MaxBatteryLife)
+            while (!hasCharged)
             {
-                throw new ValueOutOfRangeException(
-                    "Invalid value!", i_ElectricVehicle.MaxBatteryLife, 0);
+                while (amountInMins <= 0 || amountInMins > i_ElectricVehicle.MaxBatteryLife * 60)
+                {
+                    amountInMins = float.Parse(GetCurrentBatteryLife());
+                }
+
+                hasCharged = i_ElectricVehicle.Charge(amountInMins);
             }
         }
 
         private void setFuelBasedVehicle(FuelBasedVehicle i_FuelVehicle)
         {
-            eFuelType fuelType = (eFuelType)Enum.Parse(typeof(eFuelType), GetFuelType());
+            float amount = -1;
+            bool hasBeenRefueled = false;
 
-            if (i_FuelVehicle.FuelType != fuelType)
+            while (!hasBeenRefueled)
             {
-                throw new ArgumentException("Invalid fuel type");
-            }
+                while (amount <= 0 || amount > i_FuelVehicle.MaxAmountOfFuel)
+                {
+                    amount = float.Parse(GetCurrentAmountOfFuel());
+                }
 
-            i_FuelVehicle.CurrentAmountOfFuel = float.Parse(GetCurrentAmountOfFuel());
-
-            if (i_FuelVehicle.CurrentAmountOfFuel < 0 || 
-                i_FuelVehicle.CurrentAmountOfFuel > i_FuelVehicle.MaxAmountOfFuel)
-            {
-                throw new ValueOutOfRangeException(
-                    "Invalid fuel amount!", i_FuelVehicle.MaxAmountOfFuel, 0);
-
+                hasBeenRefueled = i_FuelVehicle.Refuel(amount, i_FuelVehicle.FuelType);
             }
         }
+
         private void setCar(ICar i_Car)
         {
             i_Car.Color = (eColorType)Enum.Parse(typeof(eColorType), GetColorType());
@@ -192,23 +186,27 @@ namespace Ex03.ConsoleUI
         private void setTruck(ITruck i_Truck)
         {
             i_Truck.IsCooled = GetCooled().Equals("1");
-            i_Truck.VolumeOfCargo = float.Parse(GetVolumeOfCargo());
+            float volumeOfCargo = -1;
 
-            if (i_Truck.VolumeOfCargo < 0)
+            while (volumeOfCargo <= 0)
             {
-                throw new ValueOutOfRangeException("Invalid volume of cargo", float.MaxValue, 0); // ???
+                volumeOfCargo = float.Parse(GetVolumeOfCargo());
             }
+
+            i_Truck.VolumeOfCargo = volumeOfCargo;
         }
 
         private void setMotorcycle(IMotorcycle i_Motorcycle)
         {
             i_Motorcycle.LicenseType = (eLicenseType)Enum.Parse(typeof(eLicenseType), GetLicenseType());
-            i_Motorcycle.EngineVolume = int.Parse(GetEngineVolume());
+            int engineVolume = -1;
 
-            if (i_Motorcycle.EngineVolume < 0)
+            while (engineVolume <= 0)
             {
-                throw new ValueOutOfRangeException("Invalid engine volume", float.MaxValue, 0);
+                engineVolume = int.Parse(GetEngineVolume());
             }
+
+            i_Motorcycle.EngineVolume = engineVolume;
         }
 
         private void setElectricCar(Vehicle i_Vehicle)
@@ -246,17 +244,6 @@ namespace Ex03.ConsoleUI
             setFuelBasedVehicle(truck);
         }
 
-
-        /// <summary>
-        /// This method creates a new vehicle by the user demands (communication via UI)
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private Vehicle creatNewVehicle()
-        {
-            return null;
-        }
-
         /// <summary>
         /// This method deals with the display of the license-numbers list
         /// , by status (Waiting, InRepair etc).
@@ -270,7 +257,7 @@ namespace Ex03.ConsoleUI
                 userChoice = GetVehicleStatus();
             }
 
-            eVehicleStatus status = (eVehicleStatus)Enum.Parse(typeof(eVehicleStatus), userChoice);  // bug potential
+            eVehicleStatus status = (eVehicleStatus)Enum.Parse(typeof(eVehicleStatus), userChoice);  
             Console.WriteLine(Garage.DisplayLicenseNumbersList(status));
         }
 
@@ -401,29 +388,7 @@ namespace Ex03.ConsoleUI
 
         private void displayVehicleDetails()
         {
-
-        }
-
-        /// <summary>
-        /// This method parses the Vehicle status from string to eVehicleStatus
-        /// </summary>
-        /// <param name="i_NewStatus"></param>
-        /// <returns></returns>
-        private eVehicleStatus parseVehicleStatus(string i_NewStatus)          
-        {
-            eVehicleStatus status = eVehicleStatus.None;
-
-            foreach (eVehicleStatus current in Enum.GetValues(typeof(eVehicleStatus)))
-            {
-                if (Enum.GetName(typeof(eVehicleStatus), current).Equals(i_NewStatus))
-                {
-                    status = current;
-                    break;
-                }
-            }
-
-            return status;
-        }
-        
+            Console.WriteLine(Garage.DisplayVehicleInformation(GetLicenseNumber()));
+        }       
     }
 }

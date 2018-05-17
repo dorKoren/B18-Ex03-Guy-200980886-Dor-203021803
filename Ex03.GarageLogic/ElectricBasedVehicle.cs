@@ -69,13 +69,20 @@ namespace Ex03.GarageLogic
         /// A method charges the given amount of ***mins*** 
         /// into the vehicle's battry life.
         /// </summary>
-        public void Charge(float i_AmontInMins)    
+        public bool Charge(float i_AmontInMins)    
         {
+            bool isCharged = true;
+
             try
             {
                Fill(i_AmontInMins);
             }
-            catch { }
+            catch
+            {
+                isCharged = !isCharged;   // isCharged = false
+            }
+
+            return isCharged;
 
         }
 

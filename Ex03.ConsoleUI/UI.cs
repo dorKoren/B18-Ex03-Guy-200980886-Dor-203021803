@@ -66,85 +66,63 @@ namespace Ex03.ConsoleUI
          public static string GetFuelType()
         {
             int numOfTypes = Enum.GetNames(typeof(eFuelType)).Length - 1; 
-            return getVehicleDetails(DisplaycFuelTypes(), numOfTypes);   // <-- fix name !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        } 
+            return getVehicleDetails(DisplayFuelTypes(), numOfTypes);   
+        }
 
-
+        public static string GetVehicleStatus()
+        {
+            int numOfTypes = Enum.GetNames(typeof(eVehicleStatus)).Length - 1;
+            return getVehicleDetails(DisplayVehicleStatus(), numOfTypes);
+        }
 
         public static string GetCooled()
         {
-            return getVehicleDetails(DisplayIsCooles(), int.MaxValue); // <---
+            return getVehicleDetails(DisplayIsCooles(), int.MaxValue); 
         }
 
         public static string GetVolumeOfCargo()
         {
-            return getVehicleDetails(DisplayVolumeOfCargo(), int.MaxValue); // <---
+            return getVehicleDetails(DisplayVolumeOfCargo(), int.MaxValue); 
         }
 
         public static string GetOwnerName()
         {
-            string name = "";
-            getOwnerDetail(out name, DisplayOwnerName());
+            getOwnerDetail(out string name, DisplayOwnerName());
             return name;
         }
 
         public static string GetOwnerPhoneNumber()
         {
-            string phoneNumber = "";
-            getOwnerDetail(out phoneNumber, DisplayOwnerPhoneNumber());
+            getOwnerDetail(out string phoneNumber, DisplayOwnerPhoneNumber());
             return phoneNumber;
         }
 
         public static string GetLicenseNumber()
         {
-            string licenseNumber;
-            getOwnerDetail(out licenseNumber, DisplayOwnerLicenseNumber());
+            getOwnerDetail(out string licenseNumber, DisplayOwnerLicenseNumber());
             return licenseNumber;
-
-                          }
+        }
 
         public static string GetModelName()
         {
-            string modelName;
-            getOwnerDetail(out modelName, DisplayModelName());
+            getOwnerDetail(out string modelName, DisplayModelName());
             return modelName;
-        }
-
-        public static string GetRemainingEnergyPercentage()
-        {
-            string remainingEnergyPercentage;
-            getOwnerDetail(out remainingEnergyPercentage, DisplayRemainingEnergyPercentage());
-            return remainingEnergyPercentage;
         }
 
          public static string GetCurrentBatteryLife()
         {
-            string currentBatteryLife;
-            getOwnerDetail(out currentBatteryLife, DisplayCurrentBatteryLife());
-            return currentBatteryLife;
+            return getVehicleDetails(DisplayCurrentBatteryLife(), int.MaxValue); ;
         }
 
         public static string GetCurrentAmountOfFuel()
         {
-            string currentAmountOfFuel;
-            getOwnerDetail(out currentAmountOfFuel, DisplaycurrentAmountOfFuel());
-            return currentAmountOfFuel;
+            return getVehicleDetails(DisplaycurrentAmountOfFuel(), int.MaxValue); ;
+
         }
-
-
-        public static string GetVehicleStatus()
-        {
-            getVehicleStatus(out vehicleStatus, DisplayVehicleStatus());
-            return vehicleStatus;
-        }
-
         public static string GetAmountOfMinsToCharge()         
         {
             throw new NotImplementedException();
         }
-
-        
-
 
         /* Private Methods */
 
@@ -193,25 +171,6 @@ namespace Ex03.ConsoleUI
             }
 
             return o_Detail;
-        }
-
-        private static void getVehicleStatus(out string i_VehicleStatus, string i_AppMessage)
-        {
-            i_VehicleStatus = "";
-
-            try
-            {
-                while (i_VehicleStatus.Equals(""))
-                {
-                    Console.WriteLine(i_AppMessage);
-                    i_VehicleStatus = Console.In.ReadLine();
-                }
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine("Catching FormatException");
-                Console.WriteLine(ex.Message);
-            }
-        }
+        }     
     }
 }
