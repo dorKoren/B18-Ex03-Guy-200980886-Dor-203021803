@@ -152,7 +152,7 @@ namespace Ex03.GarageLogic
 
         public void SetWheelsAirPressure(float i_AirPressure)
         {
-            if (hasAnyWheels())
+            if (HasAnyWheels())
             {
                 foreach (Wheel currentWheel in Wheels)
                 {
@@ -196,7 +196,7 @@ namespace Ex03.GarageLogic
         /// This method checks if this vehicle has any wheels assigned to it.
         /// </summary>
         /// <returns></returns>
-        public bool hasAnyWheels()
+        public bool HasAnyWheels()
         {
             return (Wheels.Count > 0);
         }

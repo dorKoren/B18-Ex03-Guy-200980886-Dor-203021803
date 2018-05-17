@@ -214,7 +214,7 @@ namespace Ex03.ConsoleUI
         {
             float newPSI = 0;
 
-            if (i_Vehicle.hasAnyWheels())
+            if (i_Vehicle.HasAnyWheels())
             {
                 float maxPSI = i_Vehicle.Wheels[0].MaxAirPressure;
 
@@ -316,7 +316,7 @@ namespace Ex03.ConsoleUI
 
             if (Garage.VehicleList.TryGetValue(licenseNumber, out Vehicle vehicle))
             {
-                if (vehicle.hasAnyWheels())
+                if (vehicle.HasAnyWheels())
                 {
                     float maxPSI = vehicle.Wheels[0].MaxAirPressure;
                     vehicle.InflateAllWheels(maxPSI);

@@ -1,0 +1,10 @@
+==========================Exercise Checking Report==========================
+Exercise No...........: 3
+First Student Details.: 200980886 - Guy Balmas
+Second Student Details: 203021803 - Dor Koren
+Delivery Date.........: 17 - May - 2018
+Delivered In Delay....: No
+Delay Reason..........: 
+Visual Studio Version.: 2017
+Comments..............: 
+=======================End Exercise Checking Report=========================
