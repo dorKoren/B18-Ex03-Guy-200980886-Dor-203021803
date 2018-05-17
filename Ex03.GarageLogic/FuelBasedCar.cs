@@ -24,6 +24,7 @@ namespace Ex03.GarageLogic
             this.m_NumOfDoors = eNumOfDoors.Unknown;
             MaxAmountOfFuel = k_MaxAmountOfFuel;
             Type = eVehicleType.FuelBasedCar;
+            FuelType = k_FuelType;
             InitWheels();
         }
 
@@ -33,6 +34,7 @@ namespace Ex03.GarageLogic
             this.m_Color = i_Color;
             this.m_NumOfDoors = i_NumOfDoors;
             Type = eVehicleType.FuelBasedCar;
+            FuelType = k_FuelType;
             InitWheels();
         }
 

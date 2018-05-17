@@ -33,6 +33,7 @@ namespace Ex03.ConsoleUI
             em.Wheels[0].CurrentAirPressure = 10;
             garage.Insert(fm, "0000004", "GeorgeBush", "0545206551"); 
             garage.Insert(ft, "0000005", "WillSmith", "0545206551");
+            ft.CurrentAmountOfFuel = 1;
 
             engine.Garage = garage;
             engine.Run();

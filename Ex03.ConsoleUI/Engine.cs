@@ -269,8 +269,8 @@ namespace Ex03.ConsoleUI
                 while (fuelType == "") { fuelType = UI.GetFuelType(); }
                 while (amountOfFuel == "")
                 {
-                    //amount = UI.GetFuelAmount();    // dortal bag
-                    amountOfFuel = amount.ToString();
+                    amountOfFuel = UI.GetFuelAmount();    // dortal bag
+                    amount = float.Parse(amountOfFuel);
                 }
             }
 
@@ -279,7 +279,7 @@ namespace Ex03.ConsoleUI
                 if (vehicle is FuelBasedVehicle)
                 {
                     FuelBasedVehicle fuelVehicle = (FuelBasedVehicle)vehicle;
-                    fuel = parseFuelType(fuelType);
+                    fuel = (eFuelType)Enum.Parse(typeof(eFuelType), fuelType);         // Guy fix 17.05
                     fuelVehicle.Refuel(amount, fuel);
                 }
             }
@@ -350,21 +350,6 @@ namespace Ex03.ConsoleUI
 
             return status;
         }
-
-        private eFuelType parseFuelType(string i_FuelType)
-        {
-            eFuelType fuel = eFuelType.Unknown;
-
-            foreach (eFuelType current in Enum.GetValues(typeof(eFuelType)))
-            {
-                if (Enum.GetName(typeof(eFuelType), current).Equals(fuel))
-                {
-                    fuel = current;
-                    break;
-                }
-            }
-
-            return fuel;
-        }
+        
     }
 }

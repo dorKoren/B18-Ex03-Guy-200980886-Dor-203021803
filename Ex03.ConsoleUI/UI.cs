@@ -38,7 +38,7 @@ namespace Ex03.ConsoleUI
 
         public static string GetFuelAmount()
         {
-            return getVehicleDetails(DisplayWheelsAirPressure(), int.MaxValue); // <--- ?
+            return getVehicleDetails(DisplayFuelAmount(), int.MaxValue); // <--- ?
         }
 
         public static string GetRemainingBatteryLife()
@@ -105,7 +105,9 @@ namespace Ex03.ConsoleUI
 
         public static string GetFuelType()
         {
-            throw new NotImplementedException();
+            string fuelType;
+            getVehicleStatus(out fuelType, DisplayFuelType());
+            return fuelType;
         }
 
         public static string GetAmountOfMinsToCharge()          // Guy addition 15.05

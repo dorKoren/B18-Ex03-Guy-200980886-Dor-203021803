@@ -303,6 +303,24 @@ namespace Ex03.ConsoleUI
   |_______________________________________________________________| ");
         }
         
+        public static string DisplayFuelType()
+        {
+            return string.Format(
+@"
+   _______________________________________________________________
+  | Please select a desired fuel type:                            |
+  |---------------------------------------------------------------|                                                    
+  |  1. Soler                                                     |
+  |  2. Octan 95                                                  |
+  |  3. Octan 96                                                  |
+  |  4. Octan 98                                                  |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |                                                               |
+  |_______________________________________________________________| ");
+        }
+       
         public static string DisplayVehicleIsAlreadyInTheGarage(string i_LicenseNumber)
         {
             return string.Format(

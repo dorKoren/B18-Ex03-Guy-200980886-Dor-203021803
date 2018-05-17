@@ -25,6 +25,7 @@ namespace Ex03.GarageLogic
             this.m_VolumeOfCargo = 0;
             MaxAmountOfFuel = k_MaxAmountOfFuel;
             Type = eVehicleType.FuelBasedTruck;
+            FuelType = k_FuelType;
             InitWheels();
         }
 
@@ -34,6 +35,7 @@ namespace Ex03.GarageLogic
             this.m_IsCooled = i_IsCooled;
             this.m_VolumeOfCargo = i_VolumeOfCargo;
             Type = eVehicleType.FuelBasedTruck;
+            FuelType = k_FuelType;
             InitWheels();
         }
 
